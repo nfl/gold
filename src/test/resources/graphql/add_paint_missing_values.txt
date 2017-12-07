@@ -1,0 +1,19 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "Paint",
+    idGeneration: Client,
+        domainFields: [{
+            memberType:      Enum,
+        	memberFieldName: "color",
+        	memberDescription: "The color of the paint."
+        }]
+  })
+  {
+    name,
+    domainFields {
+      memberType,
+      memberFieldName,
+      memberDescription
+    }
+  }
+}

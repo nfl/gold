@@ -1,0 +1,24 @@
+mutation  {
+  upsertSchemaInstance(schemaInstance: {
+    id: "mediaid2",
+    name: "Media2",
+    description: "Media2 Description - Not a real reference to videoid1, the id is only on the description."
+  })
+  {
+    id,
+    name,
+    description,
+    mediaRef {
+        ... on Video {
+            id,
+            name,
+            description
+         }
+         ... on Audio {
+            id,
+            name,
+            description
+         }
+     }
+  }
+}

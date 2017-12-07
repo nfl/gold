@@ -1,0 +1,14 @@
+mutation  {
+  upsertSchemaInstance(schemaInstance: {
+    id: "english",
+    memberOne: "Merged String Example",
+    memberTwo: 5678,
+    memberThree: true
+  })
+  {
+    id,
+    memberOne,
+    memberTwo,
+    memberThree
+  }
+}

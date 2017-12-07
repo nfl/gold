@@ -1,0 +1,13 @@
+mutation {
+    upsertSchemaDefinition(schemaDef: {
+        name: "WithAnotherInstanceReferenceTypeTwo"
+        description: "Schema with another instance reference"
+        domainFields: [{
+            memberFieldName: "ref2"
+            memberType: AnotherInstanceReference
+        }]
+    })
+    {
+        name
+    }
+}

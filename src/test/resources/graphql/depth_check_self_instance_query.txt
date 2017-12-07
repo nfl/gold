@@ -1,0 +1,32 @@
+query {
+  viewer {
+    instances(first:1, after:"c2ltcGxlLWN1cnNvci0x") {
+      edges {
+        node {
+          oneness,
+          goDeeper {
+            oneness,
+            goDeeper {
+              oneness,
+              goDeeper {
+                oneness,
+                goDeeper {
+                  oneness,
+                  goDeeper {
+                    oneness,
+                    goDeeper {
+                      oneness,
+                      goDeeper {
+                        oneness
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

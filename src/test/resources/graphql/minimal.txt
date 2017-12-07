@@ -1,0 +1,11 @@
+query {
+  viewer {
+    schemas(first:1, after:"c2ltcGxlLWN1cnNvci0x") {
+      edges {
+        node {
+          name
+        }
+      }
+    }
+  }
+}

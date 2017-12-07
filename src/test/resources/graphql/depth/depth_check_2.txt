@@ -1,0 +1,23 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "Depth_Check_Second",
+    idGeneration: Client,
+    domainFields: [{
+        memberType:      String,
+    	memberFieldName: "depthDescription",
+    	memberDescription: "Describe second."
+    },{
+        memberType:      AnotherDynamicDomainReference,
+        memberFieldName: "goDeeperThird",
+        otherTypeName: "Depth_Check_Third"
+    }]
+  })
+  {
+     name,
+     domainFields {
+        memberType,
+        memberFieldName,
+        memberDescription
+     }
+  }
+}

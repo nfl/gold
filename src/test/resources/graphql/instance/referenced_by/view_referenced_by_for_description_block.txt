@@ -1,0 +1,22 @@
+query {
+  viewer {
+    instances(ids: ["descriptionblockid1"]) {
+      edges {
+        node {
+          id,
+          name,
+          description,
+          referencedBy {
+             id,
+             schemaInstanceKey {
+                schemaNamespace,
+                schemaName,
+                instanceNamespace,
+                label
+             }
+          }
+        }
+      }
+    }
+  }
+}

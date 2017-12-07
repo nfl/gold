@@ -1,0 +1,31 @@
+mutation  {
+  upsertSchemaInstance(schemaInstance: {
+    id: "Says",
+    shieldRef:
+    [{
+        id: "1234",
+        typeDefinition: "Image"
+    },{
+        id: "5678",
+        typeDefinition: "Video"
+    },{
+        id: "1234",
+        typeDefinition: "Image"
+
+    }]
+  })
+  {
+    id,
+    shieldRef {
+      ... on Image {
+            id,
+            title
+      },
+      ... on Video {
+            id,
+            title,
+            caption
+      }
+    }
+  }
+ }

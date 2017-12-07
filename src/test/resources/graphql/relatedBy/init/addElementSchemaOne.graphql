@@ -1,0 +1,8 @@
+mutation {
+    upsertSchemaDefinition(schemaDef:{
+        name: "Element1",
+    })
+    {
+        name
+    }
+}

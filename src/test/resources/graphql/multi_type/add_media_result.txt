@@ -1,0 +1,1 @@
+{upsertSchemaDefinition={name=Media, domainFields=[{memberType=MultiTypeDynamicReference, memberFieldName=mediaRef, memberDescription=A pointer to a photo., possibleTypes=[Photo, Video]}]}}

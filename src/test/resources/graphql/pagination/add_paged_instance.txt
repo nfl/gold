@@ -1,0 +1,8 @@
+mutation ($id: ID!)  {
+  upsertSchemaInstance(schemaInstance: {
+    id: $id
+  })
+  {
+    id
+  }
+}

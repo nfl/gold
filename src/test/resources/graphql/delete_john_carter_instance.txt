@@ -1,0 +1,6 @@
+mutation  {
+  removeInstance(id: "english")
+  {
+    id
+  }
+}

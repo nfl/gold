@@ -1,0 +1,1 @@
+{viewer={instances={edges=[{node={id=videoid1, referencedBy=[{id=videoid2, schemaInstanceKey={schemaNamespace=SCHEMA, schemaName=Video, instanceNamespace=ReferencedByNameSpace, label=PUBLISHED}}]}}]}}}

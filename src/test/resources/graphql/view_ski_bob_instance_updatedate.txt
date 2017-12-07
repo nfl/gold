@@ -1,0 +1,13 @@
+query {
+  viewer {
+    instances {
+      edges {
+        node {
+          id,
+          resort,
+          updateDate
+        }
+      }
+    }
+  }
+}

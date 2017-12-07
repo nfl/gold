@@ -1,0 +1,14 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "skibob",
+    idGeneration: Client,
+    domainFields: [{
+        memberType:      AnotherDynamicDomainReference,
+        memberFieldName: "johnCarterRef",
+        memberDescription: "Describe five.",
+        otherTypeName: "John_Carter"
+    }]})
+  {
+    name
+  }
+}

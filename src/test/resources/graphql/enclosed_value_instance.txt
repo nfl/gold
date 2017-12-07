@@ -1,0 +1,26 @@
+mutation  {
+  upsertSchemaInstance(schemaInstance: {
+    id: "firstEnclosed",
+    address: {
+        street: "1234 Main Street",
+        city: "Springville",
+        location: {
+            state: "Illinois",
+            zip: "54321",
+            country: "Narnia"
+        }
+    }
+  })
+  {
+    id,
+    address {
+        street,
+        city,
+        location {
+            state,
+            zip,
+            country
+        }
+    }
+  }
+}

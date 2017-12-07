@@ -1,0 +1,126 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "John_Carter",
+    description: "Alan Rules",
+    idGeneration: Client,
+    domainFields: [{
+        memberType:      String,
+    	memberFieldName: "memberOne",
+    	memberDescription: "Describe one."
+    },{
+        memberType:      Integer,
+    	memberFieldName: "memberTwo",
+    	memberDescription: "Describe two."
+    },{
+        memberType:      Boolean,
+    	memberFieldName: "memberThree",
+    	memberDescription: "Describe three."
+    },{
+        memberType:      AnotherInstanceReference,
+        memberFieldName: "memberFour",
+        memberDescription: "Describe four."
+    },{
+        memberType:      AnotherDynamicDomainReference,
+        memberFieldName: "memberFive",
+        memberDescription: "Describe five.",
+        otherTypeName: "skibob"
+    },{
+        memberType:      Struct,
+        memberFieldName: "memberSix",
+        memberDescription: "Describe six.",
+        otherTypeName:  "exampleStruct"
+    },{
+        memberType:      Array,
+        memberFieldName: "memberArrayOne",
+        memberDescription: "Describe Array One.",
+        arrayEntryType:  String
+    },{
+        memberType:      Array,
+        memberFieldName: "memberArrayTwo",
+        memberDescription: "Describe Array Two.",
+        arrayEntryType:  Integer
+    },{
+        memberType:      Array,
+        memberFieldName: "memberArrayThree",
+        memberDescription: "Describe Array Three.",
+        arrayEntryType:  Boolean
+    },{
+        memberType:      Array,
+        memberFieldName: "memberArrayFour",
+        memberDescription: "Describe Array Four.",
+        arrayEntryType:  AnotherDynamicDomainReference
+        otherTypeName: "skibob"
+    },{
+        memberType:      Array,
+        memberFieldName: "memberArrayFive",
+        memberDescription: "Describe Array Five.",
+        arrayEntryType:  AnotherInstanceReference
+    }],
+    valueDefinitions: [{
+        name: "exampleStruct",
+            valueFields: [{
+                memberType:      String,
+            	memberFieldName: "valueMemberOne",
+            	memberDescription: "Describe one."
+            },{
+                memberType:      Integer,
+            	memberFieldName: "valueMemberTwo",
+            	memberDescription: "Describe two."
+            },{
+                memberType:      Boolean,
+            	memberFieldName: "valueMemberThree",
+            	memberDescription: "Describe three."
+            },{
+                 memberType:      AnotherInstanceReference,
+                 memberFieldName: "valueMemberFour",
+                 memberDescription: "Describe four."
+             },{
+                 memberType:      AnotherDynamicDomainReference,
+                 memberFieldName: "valueMemberFive",
+                 memberDescription: "Describe five.",
+                 otherTypeName: "skibob"
+             },{
+                 memberType:      Array,
+                 memberFieldName: "valueMemberArrayOne",
+                 memberDescription: "Describe Array One.",
+                 arrayEntryType:  String
+             },{
+                 memberType:      Array,
+                 memberFieldName: "valueMemberArrayTwo",
+                 memberDescription: "Describe Array Two.",
+                 arrayEntryType:  Integer
+             },{
+                 memberType:      Array,
+                 memberFieldName: "valueMemberArrayThree",
+                 memberDescription: "Describe Array Three.",
+                 arrayEntryType:  Boolean
+             },{
+                 memberType:      Array,
+                 memberFieldName: "valueMemberArrayFour",
+                 memberDescription: "Describe Array Four.",
+                 arrayEntryType:  AnotherDynamicDomainReference
+                 otherTypeName: "skibob"
+             }]
+    }]
+  })
+  {
+    name,
+    description,
+    idGeneration,
+    domainFields {
+        memberType,
+    	memberFieldName,
+    	memberDescription,
+    	otherTypeName
+    },
+    valueDefinitions {
+        name,
+        valueFields {
+            memberType,
+            memberFieldName,
+            memberDescription,
+            otherTypeName
+        }
+    }
+  }
+}

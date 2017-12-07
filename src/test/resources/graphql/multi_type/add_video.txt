@@ -1,0 +1,16 @@
+mutation {
+    upsertSchemaDefinition(schemaDef:{
+        name:"Video",
+        idGeneration:Client,
+        domainFields:[{
+            memberType:String,
+            memberFieldName:"format"
+        }]
+    })
+    {
+        name,
+        domainFields {
+            memberFieldName
+        }
+    }
+}

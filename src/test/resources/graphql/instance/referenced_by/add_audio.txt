@@ -1,0 +1,27 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "Audio",
+    idGeneration: Client,
+    domainFields: [{
+        memberType:      String,
+        memberFieldName: "name",
+        memberDescription: "The name of the audio",
+    }, {
+        memberType:      String,
+        memberFieldName: "description",
+        memberDescription: "The description of the audio",
+    }, {
+      memberType: AnotherInstanceReference,
+      memberFieldName: "nextAudio",
+      memberDescription: "Next audio on a sequence"
+    }]
+  })
+  {
+    name,
+    domainFields {
+      memberType,
+      memberFieldName,
+      memberDescription
+    }
+  }
+}

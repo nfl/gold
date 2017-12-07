@@ -1,0 +1,1 @@
+{upsertSchemaDefinition={name=Library, domainFields=[{memberFieldName=storage, memberType=Array, arrayEntryType=MultiTypeDynamicReference}]}}

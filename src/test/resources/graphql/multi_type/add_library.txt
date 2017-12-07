@@ -1,0 +1,21 @@
+mutation {
+    upsertSchemaDefinition(schemaDef:{
+        name:"Library"
+        idGeneration:Client,
+        domainFields:[{
+            memberType: Array,
+            memberFieldName: "storage",
+            possibleTypes: ["Photo", "Video"],
+            arrayEntryType: MultiTypeDynamicReference
+        }
+        ]
+    })
+    {
+        name,
+        domainFields{
+            memberFieldName,
+            memberType,
+            arrayEntryType
+        }
+    }
+}

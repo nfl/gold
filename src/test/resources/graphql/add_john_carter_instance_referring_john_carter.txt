@@ -1,0 +1,12 @@
+mutation  {
+  upsertSchemaInstance(schemaInstance: {
+    id: "referring",
+    memberArrayFive: ["english"]
+  })
+  {
+    id,
+    memberArrayFive {
+      id
+    }
+  }
+}

@@ -1,0 +1,9 @@
+mutation  {
+  upsertSchemaInstance(schemaInstance: {
+    id: "skibob_with_constraint"
+  })
+  {
+    id,
+    resort
+  }
+}

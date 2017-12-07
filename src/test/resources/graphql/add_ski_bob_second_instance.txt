@@ -1,0 +1,10 @@
+mutation  {
+  upsertSchemaInstance(schemaInstance: {
+    id: "ski2_ski2_ski2",
+    resort: "baldy"
+  })
+  {
+    id,
+    resort
+  }
+}

@@ -1,0 +1,29 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "Media",
+    idGeneration: ServiceGeneratedGUID,
+    domainFields: [{
+        memberType:      String,
+        memberFieldName: "name",
+        memberDescription: "The name of the Media",
+    }, {
+        memberType:      String,
+        memberFieldName: "description",
+        memberDescription: "The description of the Media",
+    },  {
+        memberType:      MultiTypeDynamicReference,
+        memberFieldName: "mediaRef",
+        memberDescription: "The reference to the media type",
+        possibleTypes: ["Video", "Audio"]
+   }]
+  })
+  {
+    name,
+    domainFields {
+      memberType,
+      memberFieldName,
+      memberDescription,
+      possibleTypes
+    }
+  }
+}

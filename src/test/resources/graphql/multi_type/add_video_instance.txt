@@ -1,0 +1,10 @@
+mutation {
+    upsertSchemaInstance(schemaInstance: {
+        id: "video1",
+        format :"mp4"
+    })
+    {
+        id,
+        format
+    }
+}

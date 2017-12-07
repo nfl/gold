@@ -1,0 +1,23 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "BadBoy",
+    idGeneration: Client,
+    domainFields: [{
+        memberType:      ExternalReference,
+        memberFieldName: "shieldRef",
+        memberDescription: "A pointer to a shield image.",
+        serviceKey: "BOGUS",
+        possibleTypes: ["One", "Two", "Three"]
+    }]
+  })
+  {
+    name,
+    domainFields {
+      memberType,
+      memberFieldName,
+      memberDescription,
+      serviceKey,
+      possibleTypes
+    }
+  }
+}

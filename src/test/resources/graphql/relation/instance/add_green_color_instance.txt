@@ -1,0 +1,10 @@
+mutation {
+    upsertSchemaInstance(schemaInstance: {
+        id: "green",
+        name: "Green color"
+    })
+    {
+        id,
+        name
+    }
+}

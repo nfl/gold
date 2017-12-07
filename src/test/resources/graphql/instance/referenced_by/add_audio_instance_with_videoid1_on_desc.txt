@@ -1,0 +1,8 @@
+mutation  {
+  upsertSchemaInstance(schemaInstance: {
+    id: "audioid2", name: "Audio2", description: "This is the audio from videoid1 but its not a reference to the video"
+  })
+  {
+    id, name, description
+  }
+ }

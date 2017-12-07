@@ -1,0 +1,17 @@
+mutation {
+    upsertSchemaDefinition(schemaDef:{
+        name: "Photo",
+        idGeneration: Client,
+        domainFields: [{
+            memberType: String,
+            memberFieldName:"size"
+        }]
+    })
+    {
+        name,
+        domainFields {
+            memberType,
+            memberFieldName
+        }
+    }
+}

@@ -1,0 +1,19 @@
+query ($names: [String!], $first: Int, $last: Int, $before: String, $after: String) {
+  viewer {
+    schemas(names: $names, first: $first, last: $last, before: $before, after: $after) {
+      edges {
+        node {
+          name
+        }
+        cursor
+      }
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      totalCount
+    }
+  }
+}

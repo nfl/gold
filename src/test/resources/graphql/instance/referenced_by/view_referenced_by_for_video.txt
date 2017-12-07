@@ -1,0 +1,20 @@
+query {
+  viewer {
+    instances(ids: ["videoid1"]) {
+      edges {
+        node {
+          id,
+          referencedBy {
+             id,
+             schemaInstanceKey {
+                schemaNamespace,
+                schemaName,
+                instanceNamespace,
+                label
+             }
+          }
+        }
+      }
+    }
+  }
+}

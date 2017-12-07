@@ -1,0 +1,8 @@
+mutation  {
+  upsertSchemaInstance(schemaInstance: {
+    id: "videoid1", name: "Video1", description: "Video1 Description"
+  })
+  {
+    id, name, description
+  }
+ }

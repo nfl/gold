@@ -1,0 +1,38 @@
+mutation  {
+  upsertSchemaInstance(schemaInstance: {
+    id: "Says",
+    shieldRef: {
+        id: "1234",
+        typeDefinition: "Image"
+    },
+    externalVideoReference: {
+            id: "5678",
+            typeDefinition: "Video"
+        },
+    externalImageReference: {
+            id: "1234",
+            typeDefinition: "Image"
+        }
+  })
+  {
+    id,
+    shieldRef {
+      ... on Image {
+            id,
+            title
+      }
+    },
+    externalVideoReference {
+          ... on Video {
+                id,
+                title
+          }
+        },
+    externalImageReference {
+          ... on Image {
+                id,
+                title
+          }
+        }
+  }
+ }

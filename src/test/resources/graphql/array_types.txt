@@ -1,0 +1,40 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "John_Carter",
+    domainFields: [{
+        memberType:      Array,
+    	memberFieldName: "memberOne",
+    	arrayEntryType:  String
+    },{
+        memberType:      Array,
+    	memberFieldName: "memberTwo",
+    	arrayEntryType:  Integer
+    }
+    ,{
+        memberType:      Array,
+    	memberFieldName: "memberThree",
+    	arrayEntryType:  Boolean,
+    }
+    ,{
+        memberType:      Array,
+        memberFieldName: "memberFour",
+        arrayEntryType:  AnotherInstanceReference
+    }
+    ,{
+        memberType:      Array,
+        memberFieldName: "memberFive"
+        otherTypeName: "skibob"
+        arrayEntryType:  AnotherDynamicDomainReference,
+    }
+    ]
+  })
+  {
+    name,
+    domainFields {
+        memberType,
+    	memberFieldName,
+    	arrayEntryType,
+    	otherTypeName
+    	}
+  }
+}

@@ -1,0 +1,1 @@
+{upsertSchemaInstance={id=media1, mediaRef={id=video1, format=mp4}}}

@@ -1,0 +1,11 @@
+query {
+  viewer {
+    instances(ids:["ski_ski_ski", "ski2_ski2_ski2"]) {
+      edges {
+        node {
+          id
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "John_Carter",
+    domainFields: [{
+        memberType:      Array,
+    	memberFieldName: "memberOne",
+    }]
+  })
+  {
+    name,
+    domainFields {
+        memberType,
+    	memberFieldName,
+    	arrayEntryType,
+    	}
+  }
+}

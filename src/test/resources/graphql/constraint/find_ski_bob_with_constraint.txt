@@ -1,0 +1,16 @@
+query {
+  viewer {
+    schemas(names: ["skibob_with_constraint"]) {
+      edges {
+        node {
+          name,
+          domainFields {
+            constraints {
+              instanceMutationSchemaConstraint
+            }
+          }
+        }
+      }
+    }
+  }
+}

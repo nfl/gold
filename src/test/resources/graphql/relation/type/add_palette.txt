@@ -1,0 +1,29 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "Palette",
+    description: "Color palette.",
+    idGeneration: Client,
+    domainFields: [{
+        memberType:      String,
+    	memberFieldName: "name",
+    	memberDescription: "The name."
+    },{
+        memberType:      Array,
+        memberFieldName: "colors",
+        memberDescription: "Holds array of colors.",
+        arrayEntryType:  AnotherDynamicDomainReference,
+        otherTypeName: "Color"
+    }]
+  })
+  {
+    name,
+    description,
+    idGeneration,
+    domainFields {
+        memberType,
+    	memberFieldName,
+    	memberDescription,
+    	otherTypeName
+    }
+  }
+}

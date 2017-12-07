@@ -1,0 +1,10 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "Of_Mars",
+    idGeneration: ServiceGeneratedGUID
+  })
+  {
+    name,
+    idGeneration
+  }
+}

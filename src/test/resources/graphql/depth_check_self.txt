@@ -1,0 +1,23 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "Deep_Thought",
+    idGeneration: Client,
+    domainFields: [{
+        memberType:      String,
+    	memberFieldName: "oneness",
+    	memberDescription: "Describe one."
+    },{
+        memberType:      AnotherInstanceReference,
+        memberFieldName: "goDeeper",
+        memberDescription: "Refer back to myself"
+    }]
+  })
+  {
+     name,
+     domainFields {
+        memberType,
+        memberFieldName,
+        memberDescription
+     }
+  }
+}

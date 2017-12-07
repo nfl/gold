@@ -1,0 +1,21 @@
+mutation {
+    upsertSchemaDefinition(schemaDef: {
+        name: "WithArraysOrPrimitives"
+        domainFields: [{
+            memberFieldName: "digits"
+            memberType: Array
+            arrayEntryType: Integer
+        }, {
+            memberFieldName: "boleans"
+            memberType: Array
+            arrayEntryType: Boolean
+        },{
+            memberFieldName: "strings"
+            memberType: Array
+            arrayEntryType: String
+        }]
+    })
+    {
+        name
+    }
+}
