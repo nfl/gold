@@ -1,0 +1,17 @@
+mutation ($name: String!) {
+  upsertSchemaDefinition(schemaDef: {
+    name: $name,
+    idGeneration: Client,
+    domainFields: [{
+        memberType:      String,
+        memberFieldName: "name"
+    }]
+  })
+  {
+    name,
+    domainFields {
+      memberType,
+      memberFieldName
+    }
+  }
+}

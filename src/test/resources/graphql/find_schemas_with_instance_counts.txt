@@ -1,0 +1,12 @@
+query ($instanceNamespace: String!) {
+  viewer {
+    schemas {
+      edges {
+        node {
+          name
+          instanceCount(instanceNamespace: $instanceNamespace)
+        }
+      }
+    }
+  }
+}

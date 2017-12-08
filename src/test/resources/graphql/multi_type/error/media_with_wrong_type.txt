@@ -1,0 +1,28 @@
+mutation  {
+  upsertSchemaInstance(schemaInstance: {
+    id: "media1",
+    mediaRef: {
+        id: "book1",
+        schemaInstanceKey: {
+            schemaName: "Dog"
+        }
+    }
+  })
+  {
+    id,
+    mediaRef {
+      ... on Photo {
+            id,
+            size
+      }
+      ... on Video {
+            id,
+            format
+      }
+      ... on Dog {
+            id,
+            age
+      }
+    }
+  }
+ }

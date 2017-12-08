@@ -1,0 +1,1 @@
+{upsertSchemaDefinition={name=Deep_Thought, domainFields=[{memberType=String, memberFieldName=oneness, memberDescription=Describe one.}, {memberType=AnotherInstanceReference, memberFieldName=goDeeper, memberDescription=Refer back to myself}]}}

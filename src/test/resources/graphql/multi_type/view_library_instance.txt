@@ -1,0 +1,21 @@
+query {
+  viewer {
+      instances(first:1, after:"c2ltcGxlLWN1cnNvci0x") {
+        edges {
+          node {
+            id,
+            storage {
+              ... on Video {
+                  id,
+                  format
+              }
+              ... on Photo {
+                  id,
+                  size
+              }
+            }
+          }
+        }
+      }
+  }
+}

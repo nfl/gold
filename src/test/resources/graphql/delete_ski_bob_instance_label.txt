@@ -1,0 +1,7 @@
+mutation  {
+  removeInstance(label: "POWDER", id: "ski_ski_ski")
+  {
+    id
+  }
+}
+

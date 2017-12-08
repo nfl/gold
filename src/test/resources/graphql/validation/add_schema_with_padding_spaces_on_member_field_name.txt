@@ -1,0 +1,20 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "WithPaddingSpacesMemberFieldName",
+    description: "Schema definition with padding spaces on field name.",
+    idGeneration: Client,
+    domainFields: [{
+        memberType:      String,
+        memberFieldName: " fieldWithPaddingSpaces ",
+        memberDescription: "Member field name with padding spaces."
+    },{
+        memberType:      String,
+        memberFieldName: "valid",
+        memberDescription: "Valid field name."
+    }]
+  })
+  {
+    name,
+    description
+  }
+}

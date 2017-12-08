@@ -1,0 +1,12 @@
+query {
+  viewer {
+    instances(first:1, after:"c2ltcGxlLWN1cnNvci0x") {
+      edges {
+        node {
+          id,
+          resort
+        }
+      }
+    }
+  }
+}

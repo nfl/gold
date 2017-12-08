@@ -1,0 +1,37 @@
+mutation  {
+  upsertSchemaInstance(schemaInstance: {
+    id: "array_id1",
+    name: "Playlist1",
+    description: "Playlist1 Description",
+    entries: [
+        {
+            id: "videoid1",
+            schemaInstanceKey: {
+                schemaName: "Video"
+            }
+        },
+        {
+            id: "audioid1",
+            schemaInstanceKey: {
+                schemaName: "Audio"
+                schemaNamespace: "ignoredValue",
+                instanceNamespace: "ignoredValue",
+                label: "ignoredValue";
+            }
+         }
+     ]
+  })
+  {
+    id,
+    name,
+    description,
+    entries {
+        ... on Video {
+            id
+        }
+        ... on Audio {
+            id
+        }
+     }
+  }
+ }

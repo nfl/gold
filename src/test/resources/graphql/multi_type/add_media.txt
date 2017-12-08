@@ -1,0 +1,21 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "Media",
+    idGeneration: Client,
+    domainFields: [{
+        memberType:      MultiTypeDynamicReference,
+        memberFieldName: "mediaRef",
+        memberDescription: "A pointer to a photo.",
+        possibleTypes:["Photo", "Video"]
+    }]
+  })
+  {
+    name,
+    domainFields {
+      memberType,
+      memberFieldName,
+      memberDescription,
+      possibleTypes
+    }
+  }
+}

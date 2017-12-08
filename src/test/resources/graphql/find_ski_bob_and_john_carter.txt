@@ -1,0 +1,11 @@
+query {
+  viewer {
+    schemas(names: ["skibob","John_Carter"]) {
+      edges {
+        node {
+          name
+        }
+      }
+    }
+  }
+}

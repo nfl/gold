@@ -1,0 +1,15 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "skibob",
+    idGeneration: Client,
+    memberConfiguration: "test member configuration",
+    domainFields: [{
+        memberType:      String,
+        memberFieldName: "resort",
+        memberDescription: "Where to ski."
+    }]
+  })
+  {
+    memberConfiguration
+  }
+}

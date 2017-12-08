@@ -1,0 +1,1 @@
+{upsertSchemaInstance={id=media1, mediaRef={id=photo1, size=13Mb}}}

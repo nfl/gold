@@ -1,0 +1,20 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "WithEmptyMemberFieldName",
+    description: "Schema definition with an empty field name.",
+    idGeneration: Client,
+    domainFields: [{
+        memberType:      String,
+        memberFieldName: "",
+        memberDescription: "Empty member field name."
+    },{
+        memberType:      String,
+        memberFieldName: "valid",
+        memberDescription: "Valid field name."
+    }]
+  })
+  {
+    name,
+    description
+  }
+}

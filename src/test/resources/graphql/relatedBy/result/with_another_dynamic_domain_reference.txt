@@ -1,0 +1,1 @@
+{viewer={schemas={edges=[{node={name=WithAnotherDynamicDomainReferenceType, referencedBy=[]}}, {node={name=Element1, referencedBy=[{name=WithAnotherDynamicDomainReferenceType}]}}, {node={name=Element2, referencedBy=[]}}, {node={name=Element3, referencedBy=[]}}]}}}

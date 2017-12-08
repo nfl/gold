@@ -1,0 +1,1 @@
+{upsertSchemaDefinition={name=Simon, domainFields=[{memberType=Array, memberFieldName=shieldRef, memberDescription=A pointer to a shield image., serviceKey=SHIELD, possibleTypes=[Image, Article, Video]}]}}

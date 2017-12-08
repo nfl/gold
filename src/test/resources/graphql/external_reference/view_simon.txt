@@ -1,0 +1,17 @@
+query {
+  viewer {
+    instances(first:1, after:"c2ltcGxlLWN1cnNvci0x") {
+      edges {
+        node {
+          id,
+          shieldRef {
+            ... on Image {
+                  id,
+                  title
+            }
+          }
+        }
+      }
+    }
+  }
+}

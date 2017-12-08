@@ -1,0 +1,47 @@
+mutation  {
+  upsertSchemaInstance(schemaInstance: {
+    id: "english",
+    memberOne: "String Example"
+    memberTwo: 1234,
+    memberThree: false,
+    memberArrayOne: ["oneEntry", "twoEntry", "threeEntry", "fourEntry"],
+    memberArrayTwo: [4, 3, 2, 1],
+    memberArrayThree: [false, true, false],
+    memberFive: "ski_ski_ski",
+    memberArrayFour: ["ski_ski_ski", "ski_ski_ski", "ski_ski_ski"],
+    memberFour: "english",
+    memberSix: {
+        valueMemberOne: "Struct String Example",
+        valueMemberTwo: 5678,
+        valueMemberThree: true,
+        valueMemberFour: "english"
+    }
+  })
+  {
+    id,
+    memberOne,
+    memberTwo,
+    memberThree,
+    memberArrayOne,
+    memberArrayTwo,
+    memberArrayThree,
+    memberFive {
+        id,
+        resort
+    },
+    memberArrayFour { id, resort }
+    memberFour {
+        id,
+        memberOne
+    },
+    memberSix {
+        valueMemberOne,
+        valueMemberTwo,
+        valueMemberThree,
+        valueMemberFour {
+          id,
+          memberOne
+        }
+    }
+  }
+}

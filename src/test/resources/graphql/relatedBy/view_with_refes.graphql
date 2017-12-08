@@ -1,0 +1,14 @@
+query {
+    viewer {
+        schemas{
+            edges{
+                node{
+                    name
+                    referencedBy{
+                        name
+                    }
+                }
+            }
+        }
+    }
+}

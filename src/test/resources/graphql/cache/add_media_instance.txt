@@ -1,0 +1,8 @@
+mutation  {
+  upsertSchemaInstance(schemaInstance: {
+    name: "Media1", description: "Media1 Description"
+  })
+  {
+    name, description
+  }
+ }

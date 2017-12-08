@@ -1,0 +1,1 @@
+{upsertSchemaInstance={id=library, storage=[{id=photo1, size=13Mb}, {id=video1, format=mp4}]}}

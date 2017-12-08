@@ -1,0 +1,23 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "Video",
+    idGeneration: ServiceGeneratedGUID,
+    domainFields: [{
+        memberType:      String,
+        memberFieldName: "name",
+        memberDescription: "The name of the video",
+    }, {
+        memberType:      String,
+        memberFieldName: "description",
+        memberDescription: "The description of the video",
+    }]
+  })
+  {
+    name,
+    domainFields {
+      memberType,
+      memberFieldName,
+      memberDescription
+    }
+  }
+}

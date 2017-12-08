@@ -1,0 +1,19 @@
+query ($ids: [String!], $first: Int, $last: Int, $before: String, $after: String) {
+  viewer {
+    instances(ids: $ids, first: $first, last: $last, before: $before, after: $after) {
+      edges {
+        node {
+          id
+        }
+        cursor
+      }
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+      totalCount
+    }
+  }
+}

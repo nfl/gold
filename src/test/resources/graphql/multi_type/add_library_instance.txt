@@ -1,0 +1,30 @@
+mutation  {
+    upsertSchemaInstance(schemaInstance: {
+        id: "library",
+        storage: [{
+            id:"photo1",
+            schemaInstanceKey: {
+                schemaName: "Photo"
+            }
+        },{
+            id:"video1",
+            schemaInstanceKey: {
+                schemaName: "Video"
+            }
+        }]
+    })
+    {
+        id,
+        storage {
+            ... on Photo {
+                id,
+                size
+            }
+            ... on Video {
+                id,
+                format
+            }
+        }
+
+    }
+}

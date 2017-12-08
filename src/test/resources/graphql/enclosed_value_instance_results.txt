@@ -1,0 +1,1 @@
+{upsertSchemaInstance={id=firstEnclosed, address={street=1234 Main Street, city=Springville, location={state=Illinois, zip=54321, country=Narnia}}}}

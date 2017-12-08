@@ -1,0 +1,15 @@
+mutation {
+    upsertSchemaDefinition(schemaDef: {
+        name: "WithArrayOfAnotherDynamicDomainReferences"
+        description: "Schema with array of another dynamic domain references."
+        domainFields: [{
+            memberFieldName: "ref"
+            otherTypeName: "Element1"
+            arrayEntryType: AnotherDynamicDomainReference
+            memberType: Array
+        }]
+    })
+    {
+        name
+    }
+}

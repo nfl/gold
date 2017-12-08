@@ -1,0 +1,17 @@
+{
+  "viewer": {
+    "schemas": {
+      "edges": [
+        {
+          "node": {
+            "name": "skibob",
+            "schemaKey": {
+              "schemaName": "skibob",
+              "schemaNamespace": "SCHEMA"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

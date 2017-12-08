@@ -1,0 +1,38 @@
+mutation {
+    upsertSchemaDefinition(schemaDef: {
+        name: "WithAllPossibleDirectRelationLinks",
+        description: "Add schema with all possible direct relation cases"
+        domainFields: [
+            {
+                memberFieldName: "anotherDynamicDomainReference"
+                otherTypeName: "Element1"
+                memberType: AnotherDynamicDomainReference
+            },{
+                memberFieldName: "multiTypeDynamicReference"
+                possibleTypes: [
+                    "Element1",
+                    "Element2",
+                    "Element3"
+                ]
+                memberType: MultiTypeDynamicReference
+            },{
+                memberFieldName: "arrayOfMultiTypeDynamicReference"
+                possibleTypes: [
+                    "Element1",
+                    "Element2",
+                    "Element3"
+                ]
+                arrayEntryType: MultiTypeDynamicReference
+                memberType: Array
+            },{
+                memberFieldName: "arrayOfAnotherDynamicDomainReference"
+                otherTypeName: "Element1"
+                arrayEntryType: AnotherDynamicDomainReference
+                memberType: Array
+            }
+        ]
+    })
+    {
+        name
+    }
+}

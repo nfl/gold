@@ -1,0 +1,20 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "WithNotValidSchemaDescriptionName_ 1234$%",
+    description: "Schema definition with invalid name.",
+    idGeneration: Client,
+    domainFields: [{
+        memberType:      String,
+        memberFieldName: "field1",
+        memberDescription: "Field 1 description"
+    },{
+        memberType:      String,
+        memberFieldName: "field2",
+        memberDescription: "Field 2 description."
+    }]
+  })
+  {
+    name,
+    description
+  }
+}

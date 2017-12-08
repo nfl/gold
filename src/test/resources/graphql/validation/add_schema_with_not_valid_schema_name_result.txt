@@ -1,0 +1,1 @@
+Exception while fetching data (/upsertSchemaDefinition) : Schema Description name must match: [_A-Za-z][_0-9A-Za-z]*

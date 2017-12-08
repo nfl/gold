@@ -1,0 +1,12 @@
+query ($orderBy: OrderBy, $orderByDirection: OrderByDirection) {
+  viewer {
+    instances(orderBy: $orderBy, orderByDirection: $orderByDirection) {
+      edges {
+        node {
+          id
+          updateDate
+        }
+      }
+    }
+  }
+}

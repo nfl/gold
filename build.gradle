@@ -1,0 +1,178 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven {
+            url "http://repo.spring.io/libs-milestone"
+        }
+    }
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.1'
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version '1.5.9.RELEASE'
+}
+
+group = 'com.nfl.graphql'
+version = PROJECT_VERSION
+description = 'GraphQL based library that allows for the dynamic specification of domain objects'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'idea'
+apply plugin: 'groovy'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    compile 'commons-io:commons-io:2.5'
+    compile 'com.google.guava:guava:23.5-jre'
+    compile 'com.jayway.jsonpath:json-path:2.2.0'
+    compile 'org.springframework.boot:spring-boot-actuator'
+    compile('org.springframework.boot:spring-boot-starter-web') {
+        exclude module: 'spring-boot-starter-tomcat'
+    }
+
+    compile 'com.graphql-java:graphql-java:4.2'
+    compile 'com.nfl.graphql:mediator:1.0.1'
+
+    testCompile('org.testng:testng:6.11')
+    testCompile ('org.springframework.boot:spring-boot-starter-test')
+
+    testCompile('org.codehaus.groovy:groovy-all:2.4.4')
+    testCompile('org.spockframework:spock-core:1.1-groovy-2.4')
+    testCompile("org.spockframework:spock-spring:1.1-groovy-2.4")
+    testCompile('cglib:cglib-nodep:3.2.4') //For spock mocking. Need later version for Java 8
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.2'
+}
+
+task testJUnit(type: Test) {
+}
+
+test {
+    useTestNG()
+    dependsOn 'testJUnit'
+}
+
+publishing {
+    publications {
+        gold(MavenPublication) {
+            from components.java
+            groupId project.group
+            artifactId project.name
+            version version
+
+            artifact sourcesJar {
+                classifier "sources"
+            }
+            artifact javadocJar {
+                classifier "javadoc"
+            }
+
+            pom.withXml {
+                asNode().children().last() + {
+                    resolveStrategy = Closure.DELEGATE_FIRST
+                    name project.name
+                    description project.description
+                    url PROJECT_GITHUB_REPO_URL
+                    scm {
+                        url PROJECT_GITHUB_REPO_URL
+                        connection PROJECT_GITHUB_REPO_URL
+                        developerConnection PROJECT_GITHUB_REPO_URL
+                    }
+                    licenses {
+                        license {
+                            name 'MIT'
+                            url PROJECT_LICENSE_URL
+                            distribution 'repo'
+                        }
+                    }
+                    developers {
+                        developer {
+                            id 'nflearl'
+                            name 'Earl Nolan'
+                        }
+                    }
+                }
+                //Bug in maven-publish plugin changes scope to runtime instead of compile
+                //https://discuss.gradle.org/t/maven-publish-plugin-generated-pom-making-dependency-scope-runtime/7494
+                asNode().dependencies.'*'.findAll() {
+                    it.scope.text() == 'runtime' && project.configurations.compile.allDependencies.find { dep ->
+                        dep.name == it.artifactId.text()
+                    }
+                }.each { it.scope*.value = 'compile' }
+            }
+        }
+    }
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER') ?: project.findProperty('bintray.user')
+    key = System.getenv('BINTRAY_KEY') ?: project.findProperty('bintray.key')
+    publications = ['gold']
+    publish = true
+    pkg {
+        repo = 'maven'
+        name = project.name
+        userOrg = 'nfl'
+        licenses = ['MIT']
+        vcsUrl = PROJECT_GITHUB_REPO_URL
+        version {
+            name = project.version
+            desc = project.description
+            released = new Date()
+            vcsTag = 'v' + project.version
+            gpg {
+                sign = true
+            }
+            mavenCentralSync {
+                sync = project.property('maven.central.sync')
+                user = System.getenv('SONATYPE_USERNAME') ?: project.findProperty('sonatype.username')
+                password = System.getenv('SONATYPE_PASSWORD') ?: project.findProperty('sonatype.password')
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    dependsOn classes
+    classifier 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+jar {
+    from "LICENSE"
+    manifest {
+        attributes(
+                "Specification-Title": project.name,
+                "Specification-Version": project.version,
+                "Implementation-Version": project.version,
+        )
+    }
+}

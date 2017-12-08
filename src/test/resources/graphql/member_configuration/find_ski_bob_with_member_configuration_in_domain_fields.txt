@@ -1,0 +1,13 @@
+query {
+  viewer {
+    schemas(names: ["skibob"]) {
+      edges {
+        node {
+          domainFields{
+            memberConfiguration
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+mutation {
+    upsertSchemaInstance(schemaInstance: {
+        id: "photo1",
+        size :"13Mb"
+    })
+    {
+        id,
+        size
+    }
+}

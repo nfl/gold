@@ -1,0 +1,1 @@
+{viewer={schemas={edges=[{node={memberConfiguration=test member configuration}}]}}}

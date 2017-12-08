@@ -1,0 +1,20 @@
+query {
+  viewer {
+    instances(ids: ["audioid1"]) {
+      edges {
+        node {
+          id,
+          referencedBy {
+             id,
+             schemaInstanceKey {
+                schemaNamespace,
+                schemaName,
+                instanceNamespace,
+                label
+             }
+          }
+        }
+      }
+    }
+  }
+}

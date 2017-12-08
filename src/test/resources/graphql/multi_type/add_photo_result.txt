@@ -1,0 +1,1 @@
+{upsertSchemaDefinition={name=Photo, domainFields=[{memberType=String, memberFieldName=size}]}}

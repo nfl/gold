@@ -1,0 +1,1 @@
+{upsertSchemaDefinition={name=Paint, domainFields=[{memberType=Enum, memberFieldName=color, memberDescription=The color of the paint.}]}}

@@ -1,0 +1,34 @@
+mutation  {
+  upsertSchemaInstance(schemaInstance: {
+    id: "mediaid1",
+    name: "Media1",
+    description: "Media1 Description",
+    mediaRef: {
+        id: "videoid1",
+        schemaInstanceKey: {
+            schemaName: "Video",
+            schemaNamespace: "ignoredValue",
+            instanceNamespace: "ignoredValue",
+            label: "ignoredValue";
+        }
+    },
+    descriptionBlockRef: "descriptionblockid1"
+  })
+  {
+    id,
+    name,
+    description,
+    mediaRef {
+        ... on Video {
+            id,
+            name,
+            description
+         }
+         ... on Audio {
+            id,
+            name,
+            description
+         }
+     }
+  }
+}

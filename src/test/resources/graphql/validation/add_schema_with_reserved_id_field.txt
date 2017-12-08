@@ -1,0 +1,20 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "WithReservedFieldName",
+    description: "Schema definition with reserved field name.",
+    idGeneration: Client,
+    domainFields: [{
+        memberType:      String,
+        memberFieldName: "id",
+        memberDescription: "Reserved field name."
+    },{
+        memberType:      String,
+        memberFieldName: "valid",
+        memberDescription: "Valid field name."
+    }]
+  })
+  {
+    name,
+    description
+  }
+}

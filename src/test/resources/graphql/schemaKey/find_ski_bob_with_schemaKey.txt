@@ -1,0 +1,15 @@
+query {
+  viewer {
+    schemas(names: ["skibob"]) {
+      edges {
+        node {
+          name,
+          schemaKey{
+            schemaName,
+            schemaNamespace
+          }
+        }
+      }
+    }
+  }
+}

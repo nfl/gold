@@ -1,0 +1,12 @@
+query {
+  viewer {
+    instances(label: "POWDER") {
+      edges {
+        node {
+          id,
+          resort
+        }
+      }
+    }
+  }
+}

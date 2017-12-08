@@ -1,0 +1,31 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "Playlist",
+    idGeneration: Client,
+    domainFields: [{
+        memberType:      String,
+        memberFieldName: "name",
+        memberDescription: "The name of the playlist",
+    }, {
+        memberType:      String,
+        memberFieldName: "description",
+        memberDescription: "The description of the playlist",
+    }, {
+       memberType:      Array,
+       memberFieldName: "entries",
+       memberDescription: "The entries on the playlist.",
+       arrayEntryType: MultiTypeDynamicReference,
+       possibleTypes: ["Audio", "Video"]
+     }
+    ]
+  })
+  {
+    name,
+    domainFields {
+      memberType,
+      memberFieldName,
+      memberDescription,
+      possibleTypes
+    }
+  }
+}

@@ -1,0 +1,14 @@
+mutation {
+    upsertSchemaDefinition(schemaDef: {
+        name: "WithAnotherDynamicDomainReferenceType"
+        description: "Schema with another dynamic domain reference"
+        domainFields: [{
+            memberFieldName: "ref"
+            otherTypeName: "Element1"
+            memberType: AnotherDynamicDomainReference
+        }]
+    })
+    {
+        name
+    }
+}

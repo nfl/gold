@@ -1,0 +1,6 @@
+mutation  {
+  removeSchemaDefinition(name: "John_Carter")
+  {
+    name
+  }
+}

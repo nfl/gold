@@ -1,0 +1,6 @@
+mutation {
+    removeInstance(id:"video1") {
+        id,
+        format
+    }
+}

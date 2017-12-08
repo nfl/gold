@@ -1,0 +1,13 @@
+mutation {
+    upsertSchemaDefinition(schemaDef: {
+        name: "WithMultiTypeDynamicReference"
+        description: "Add schema with multitype dynamic reference"
+        domainFields: [{
+            memberFieldName: "ref"
+            possibleTypes: ["Element1", "Element2", "Element3"]
+            memberType: MultiTypeDynamicReference
+        }]})
+    {
+        name
+    }
+}

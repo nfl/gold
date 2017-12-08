@@ -1,0 +1,9 @@
+mutation {
+  upsertSchemaDefinition(schemaDef: {
+    name: "ordered",
+    idGeneration: ServiceGeneratedGUID
+  })
+  {
+    name
+  }
+}
