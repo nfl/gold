@@ -8,8 +8,11 @@ import graphql.language.InlineFragment;
 import graphql.language.Selection;
 import graphql.language.SelectionSet;
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.*;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,6 +25,7 @@ import java.util.Map;
 import static com.nfl.dm.shield.dynamic.domain.schema.instancefield.AbstractReferenceType.REFERENCE_ID;
 import static com.nfl.dm.shield.dynamic.domain.schema.instancefield.AbstractReferenceType.REFERENCE_TYPE;
 
+@Service
 public class ExternalReferenceRepositoryImpl implements ExternalReferenceRepository {
 
     private final String PARAM_TEMPLATE = "?variables={variables}&query={query}";
@@ -32,7 +36,10 @@ public class ExternalReferenceRepositoryImpl implements ExternalReferenceReposit
 
     private String baseURLTemplate;
 
-    public ExternalReferenceRepositoryImpl(ObjectMapper objectMapper, String baseURLTemplate) {
+    @Autowired
+    public ExternalReferenceRepositoryImpl(
+            ObjectMapper objectMapper,
+            @Value("${external.reference.baseUrl:http://example.com}") String baseURLTemplate) {
         this.objectMapper = objectMapper;
         this.baseURLTemplate = baseURLTemplate;
     }
