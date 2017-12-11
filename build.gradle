@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+
 buildscript {
     repositories {
         jcenter()
@@ -17,7 +19,7 @@ plugins {
 }
 
 group = 'com.nfl.graphql'
-version = PROJECT_VERSION
+version = System.getenv('TRAVIS_TAG') ? PROJECT_VERSION : PROJECT_VERSION + '-' + new SimpleDateFormat('yyyy-MM-dd\'T\'HH-mm-ss').format(new Date())
 description = 'GraphQL based library that allows for the dynamic specification of domain objects'
 
 bootRepackage {
