@@ -25,7 +25,7 @@ public enum OrderBy {
     /**
      * Returns the comparator for the field (for in-memory sorting of the result set).
      *
-     * @return a comparator by updateDate (nulls first, then aerliest dates, and most recent dates last)
+     * @return a comparator by updateDate: nulls first, then earliest update dates, and eventually most recent update dates
      */
     public Comparator<SchemaInstance> getComparator() {
         return comparator;
