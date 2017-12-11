@@ -20,6 +20,10 @@ group = 'com.nfl.graphql'
 version = PROJECT_VERSION
 description = 'GraphQL based library that allows for the dynamic specification of domain objects'
 
+bootRepackage {
+    enabled = false
+}
+
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
