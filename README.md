@@ -26,8 +26,6 @@ Field selection is required with the caveat that dynamic domain objects
 do not have the concept of a default field.  The client must explicitly
 specify desired fields.  By default, no fields are returned.
 
-No search on fields.
-
 Literal fields are implemented: integer, boolean, String, enum.
 References to other types of dynamic domain objects is implemented.
 References to the same type is implemented.  Value types are also available.
