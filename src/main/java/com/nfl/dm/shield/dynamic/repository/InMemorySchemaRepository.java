@@ -8,9 +8,6 @@ import com.nfl.dm.shield.dynamic.domain.instance.SchemaInstanceKey;
 import com.nfl.dm.shield.dynamic.domain.schema.InMemorySchemaDescriptionHolder;
 import com.nfl.dm.shield.dynamic.domain.schema.SchemaDescription;
 import com.nfl.dm.shield.dynamic.domain.schema.SchemaKey;
-import com.nfl.graphql.mediator.GraphQLMediator;
-import graphql.language.SelectionSet;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -20,30 +17,20 @@ import java.util.stream.Stream;
 
 import static com.google.common.collect.Lists.transform;
 import static com.nfl.dm.shield.dynamic.domain.instance.SchemaInstance.UPDATE_DATE_FIELD;
-import static com.nfl.dm.shield.dynamic.domain.schema.instancefield.AbstractReferenceType.REFERENCE_ID;
-import static com.nfl.dm.shield.dynamic.domain.schema.instancefield.AbstractReferenceType.REFERENCE_TYPE;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.emptyMap;
 import static java.util.stream.Collectors.toList;
 
 @Service
 public class InMemorySchemaRepository extends BaseRepositoryImpl
-        implements SchemaRepository, SchemaInstanceRepository, ExternalReferenceRepository {
-
-    private final GraphQLMediator mediator;
+        implements SchemaRepository, SchemaInstanceRepository {
 
     private final Map<SchemaKey, InMemorySchemaDescriptionHolder> allTheSchemas = new ConcurrentHashMap<>(89);
 
     private final Map<SchemaInstanceKey, Map<String, InMemorySchemaInstanceHolder>> instances
             = new ConcurrentHashMap<>(89);
 
-    private final Map<String, Map<String, Map<String, Object>>> externalInstances
-            = new ConcurrentHashMap<>(89);
-
-    @SuppressWarnings("SpringJavaAutowiringInspection")
-    @Autowired
-    public InMemorySchemaRepository(GraphQLMediator mediator) {
-        this.mediator = mediator;
+    public InMemorySchemaRepository() {
     }
 
     @Override
@@ -203,32 +190,5 @@ public class InMemorySchemaRepository extends BaseRepositoryImpl
 
         return instanceHoldersForRelatedSchemas.stream().filter(instanceHolder ->
                 instanceHolder.getInstanceClob().contains(searchString));
-    }
-
-    @Override
-    public GraphQLMediator buildMediator(String authHeader) {
-        return mediator;
-    }
-
-    @Override
-    public Map<String, Object> findById(SelectionSet selections, Map<String, String> id, String authHeader) {
-
-        String typeName = id.get(REFERENCE_TYPE);
-        if (!externalInstances.containsKey(typeName)) {
-            return null;
-        }
-
-        return externalInstances.get(typeName).get(id.get(REFERENCE_ID));
-    }
-
-    public void loadExternalInstance(String typeName, String id, Map<String, Object> instance) {
-        if (!externalInstances.containsKey(typeName)) {
-            externalInstances.put(typeName, new HashMap<>(89));
-        }
-        externalInstances.get(typeName).put(id, instance);
-    }
-
-    public void clearForExternalTesting() {
-        externalInstances.clear();
     }
 }

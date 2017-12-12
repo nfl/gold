@@ -2,6 +2,7 @@ package com.nfl.dm.shield.dynamic.service;
 
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import com.nfl.dm.shield.dynamic.repository.InMemorySchemaRepository;
+import com.nfl.dm.shield.dynamic.repository.StubbedExternalReferenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -21,6 +22,9 @@ public abstract class BaseExternalReferenceTest extends BaseBeanTest {
 
     @Autowired
     private InMemorySchemaRepository inMemorySchemaRepository;
+
+    @Autowired
+    private StubbedExternalReferenceRepository externalReferenceRepository;
 
     void loadSchema(String simonSchema, String simonSchemaResults) {
         // Set up the schema
@@ -46,14 +50,14 @@ public abstract class BaseExternalReferenceTest extends BaseBeanTest {
         Map<String, Object> imageMap = new HashMap<>();
         imageMap.put("id", IMAGE_ID);
         imageMap.put("title", "Hitchhikers Guide");
-        inMemorySchemaRepository.loadExternalInstance("Image", IMAGE_ID, imageMap);
+        externalReferenceRepository.loadExternalInstance("Image", IMAGE_ID, imageMap);
 
         Map<String, Object> videoMap = new HashMap<>();
         videoMap.put("id", VIDEO_ID);
         videoMap.put("title", "Casablanca");
         videoMap.put("caption", "The greatest movie ever.");
 
-        inMemorySchemaRepository.loadExternalInstance("Video", VIDEO_ID, videoMap);
+        externalReferenceRepository.loadExternalInstance("Video", VIDEO_ID, videoMap);
     }
 
 
@@ -69,6 +73,6 @@ public abstract class BaseExternalReferenceTest extends BaseBeanTest {
     public void cleanup() {
         inMemorySchemaRepository.clearForInstanceTesting();
         inMemorySchemaRepository.clearForSchemaTesting();
-        inMemorySchemaRepository.clearForExternalTesting();
+        externalReferenceRepository.clearForExternalTesting();
     }
 }
