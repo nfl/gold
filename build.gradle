@@ -9,22 +9,13 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.0.2.RELEASE'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.1'
     }
-}
-
-plugins {
-    id 'org.springframework.boot' version '1.5.9.RELEASE'
 }
 
 group = 'com.nfl.graphql'
 version = System.getenv('TRAVIS_TAG') ? PROJECT_VERSION : PROJECT_VERSION + '-' + new SimpleDateFormat('yyyy-MM-dd\'T\'HH-mm-ss').format(new Date())
 description = 'GraphQL based library that allows for the dynamic specification of domain objects'
-
-bootRepackage {
-    enabled = false
-}
 
 apply plugin: 'java'
 apply plugin: 'maven'
@@ -46,21 +37,19 @@ dependencies {
     compile 'commons-io:commons-io:2.5'
     compile 'com.google.guava:guava:23.5-jre'
     compile 'com.jayway.jsonpath:json-path:2.2.0'
-    compile 'org.springframework.boot:spring-boot-actuator'
-    compile('org.springframework.boot:spring-boot-starter-web') {
-        exclude module: 'spring-boot-starter-tomcat'
-    }
+    compile 'org.springframework:spring-web:4.3.13.RELEASE'
 
     compile 'com.graphql-java:graphql-java:4.2'
     compile 'com.nfl.graphql:mediator:1.0.1'
 
-    testCompile('org.testng:testng:6.11')
-    testCompile ('org.springframework.boot:spring-boot-starter-test')
-
+    testCompile('org.testng:testng:6.13.1')
     testCompile('org.codehaus.groovy:groovy-all:2.4.4')
     testCompile('org.spockframework:spock-core:1.1-groovy-2.4')
-    testCompile("org.spockframework:spock-spring:1.1-groovy-2.4")
-    testCompile('cglib:cglib-nodep:3.2.4') //For spock mocking. Need later version for Java 8
+    testCompile('org.spockframework:spock-spring:1.1-groovy-2.4')
+    testCompile('org.springframework:spring-test:4.3.13.RELEASE')
+    testCompile('org.assertj:assertj-core:3.8.0')
+    testCompile('org.mockito:mockito-core:2.13.0')
+    testCompile('org.skyscreamer:jsonassert:1.5.0')
 
 }
 
