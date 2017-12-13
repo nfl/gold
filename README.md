@@ -515,7 +515,7 @@ All the fields allow one to uniquely identify the domain object of interest.
 
 ## Reserved Fields
 
-The *id*, *updateDate* and *referencedBy* fields are reserved for fe-store usage.  They may not be specified when creating
+The *id*, *updateDate* and *referencedBy* fields are reserved for *gold* usage.  They may not be specified when creating
 a SchemaDescription.
 
 ### View instances: `GraphQLInstanceService.executeQuery(String graphqlQuery, Map graphqlVariables, SchemaWriteAccess currentUserPermissions, int maxQueryDepth)`
