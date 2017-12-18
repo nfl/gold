@@ -1,10 +1,8 @@
 package com.nfl.dm.shield.dynamic.service;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import com.nfl.dm.shield.dynamic.security.SchemaWriteAccess;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -15,7 +13,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class DepthCheckSelfTest extends BaseBeanTest {
 
     private static final String SCHEMA_NAME = "Deep_Thought";

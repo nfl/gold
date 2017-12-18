@@ -1,10 +1,8 @@
 package com.nfl.dm.shield.dynamic.service;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import com.nfl.dm.shield.dynamic.security.SchemaWriteAccess;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
@@ -15,7 +13,6 @@ import static org.testng.Assert.*;
 
 @SuppressWarnings("WeakerAccess")
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class PaintSchemaTest extends BaseBeanTest {
 
     private static final String PAINT_SCHEMA_NAME = "Paint";

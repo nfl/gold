@@ -1,11 +1,9 @@
 package com.nfl.dm.shield.dynamic.service;
 
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import com.nfl.dm.shield.dynamic.security.SchemaWriteAccess;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -13,7 +11,6 @@ import static org.testng.Assert.assertTrue;
 
 @SuppressWarnings("unused")
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class MemberConfigurationTest extends BaseBeanTest {
 
     private final String addSkiBobWithMemberConfiguration;

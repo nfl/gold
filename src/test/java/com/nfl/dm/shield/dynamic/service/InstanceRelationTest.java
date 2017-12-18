@@ -1,15 +1,12 @@
 package com.nfl.dm.shield.dynamic.service;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.*;
 
 import java.util.Map;
 
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class InstanceRelationTest extends BaseBeanTest {
 
     private final String addPalette;
@@ -51,7 +48,7 @@ public class InstanceRelationTest extends BaseBeanTest {
     }
 
     @BeforeMethod
-    public void addRedGreenBlueColorInstances() throws Exception {
+    public void addRedGreenBlueColorInstances() {
 
         instanceQuery(COLOR, addRedColorInstance,
                 "{upsertSchemaInstance={id=red, name=Red color}}");
@@ -63,7 +60,7 @@ public class InstanceRelationTest extends BaseBeanTest {
                 "{upsertSchemaInstance={id=blue, name=Blue color}}");
     }
 
-    public void deleteRedColorInstance() throws Exception {
+    public void deleteRedColorInstance() {
         instanceQuery(PALETTE, addRedGreenRedPaletteInstance,
                 "{upsertSchemaInstance={id=rgr, name=Red Green Red, colors=[{id=red}, {id=green}, {id=red}]}}");
 
@@ -74,7 +71,7 @@ public class InstanceRelationTest extends BaseBeanTest {
                 "{viewer={instances={edges=[{node={id=rgr, colors=[{id=green}]}}]}}}");
     }
 
-    public void deleteGreenColorInstance() throws Exception {
+    public void deleteGreenColorInstance() {
         instanceQuery(PALETTE, addRedGreenRedPaletteInstance,
                 "{upsertSchemaInstance={id=rgr, name=Red Green Red, colors=[{id=red}, {id=green}, {id=red}]}}");
 
@@ -85,7 +82,7 @@ public class InstanceRelationTest extends BaseBeanTest {
                 "{viewer={instances={edges=[{node={id=rgr, colors=[{id=red}, {id=red}]}}]}}}");
     }
 
-    public void reductionPaletteColorsToEmptyInNaturalOrder() throws Exception {
+    public void reductionPaletteColorsToEmptyInNaturalOrder() {
         instanceQuery(PALETTE, addRedGreenBluePaletteInstance,
                 "{upsertSchemaInstance={id=rgb, name=Red Green Blue, colors=[{id=red}, {id=green}, {id=blue}]}}");
 
@@ -108,7 +105,7 @@ public class InstanceRelationTest extends BaseBeanTest {
                 "{viewer={instances={edges=[{node={id=rgb, colors=[]}}]}}}");
     }
 
-    public void reductionPaletteColorsToEmptyInOppositeOrder() throws Exception {
+    public void reductionPaletteColorsToEmptyInOppositeOrder() {
         instanceQuery(PALETTE, addRedGreenBluePaletteInstance,
                 "{upsertSchemaInstance={id=rgb, name=Red Green Blue, colors=[{id=red}, {id=green}, {id=blue}]}}");
 

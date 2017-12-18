@@ -1,21 +1,18 @@
 package com.nfl.dm.shield.dynamic.service;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import com.nfl.dm.shield.dynamic.security.SchemaWriteAccess;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-
 import java.util.Map;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class DepthCheckTest extends BaseBeanTest {
 
     private static final String SCHEMA_NAME = "Depth_Check_First";

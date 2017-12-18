@@ -3,27 +3,27 @@ package com.nfl.dm.shield.dynamic.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import com.nfl.dm.shield.dynamic.domain.instance.OrderBy;
 import com.nfl.dm.shield.dynamic.domain.instance.OrderByDirection;
 import graphql.schema.CoercingParseValueException;
 import net.minidev.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class OrderByTest extends BaseBeanTest {
 
     private static final String ORDERED_TYPE_NAME = "ordered";

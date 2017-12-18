@@ -1,15 +1,13 @@
 package com.nfl.dm.shield.dynamic.service;
 
 import com.google.common.cache.Cache;
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import com.nfl.dm.shield.dynamic.domain.schema.SchemaKey;
 import com.nfl.dm.shield.dynamic.security.SchemaWriteAccess;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-
-import org.springframework.test.context.TestPropertySource;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.util.Map;
 import java.util.Set;
@@ -17,7 +15,6 @@ import java.util.Set;
 import static org.testng.Assert.*;
 
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class SchemaDefinitionCacheTest extends BaseBeanTest {
     // Variables to contain queries for the Schema Definitions used for the tests
     private final String videoSchema;

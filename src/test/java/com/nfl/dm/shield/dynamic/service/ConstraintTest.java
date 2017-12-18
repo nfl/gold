@@ -1,18 +1,13 @@
 package com.nfl.dm.shield.dynamic.service;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.InstanceBaseBeanTest;
 import com.nfl.dm.shield.dynamic.security.SchemaWriteAccess;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class ConstraintTest extends InstanceBaseBeanTest {
 
     @Autowired

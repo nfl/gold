@@ -1,10 +1,8 @@
 package com.nfl.dm.shield.dynamic.service;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import com.nfl.dm.shield.dynamic.domain.schema.SchemaDescription;
 import graphql.ErrorType;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -13,7 +11,6 @@ import java.util.List;
 
 import static org.testng.Assert.*;
 
-@ContextConfiguration(classes = ApplicationTestConfig.class)
 public class GraphQLSchemaRelationTest extends BaseBeanTest {
 
     private final String addElementSchemaOne;
@@ -199,7 +196,7 @@ public class GraphQLSchemaRelationTest extends BaseBeanTest {
     }
 
     @AfterMethod
-    public void tearDown() throws Exception {
+    public void tearDown() {
         inMemorySchemaRepository.clearForSchemaTesting();
     }
 }

@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
@@ -24,6 +25,7 @@ import static com.nfl.dm.shield.dynamic.domain.BaseKey.*;
 
 
 @ContextConfiguration(classes = ApplicationTestConfig.class)
+@ActiveProfiles("gold_test")
 public abstract class BaseBeanTest extends AbstractTestNGSpringContextTests {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
@@ -100,13 +102,13 @@ public abstract class BaseBeanTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-    protected void assertSuccess(GraphQLResult actual) throws Exception {
+    protected void assertSuccess(GraphQLResult actual) {
         Assert.assertNotNull(actual, "Actual GraphQLResult should not be null.");
         Assert.assertTrue(actual.isSuccessful());
     }
 
 
-    protected GraphQLResult executeSchemaQuery(String query) throws Exception {
+    protected GraphQLResult executeSchemaQuery(String query) {
         GraphQLResult graphQLResult = schemaService.executeQuery(query,
                 buildSchemaVariableMap(), buildSchemaWriteAccess());
         if (log.isDebugEnabled()) {

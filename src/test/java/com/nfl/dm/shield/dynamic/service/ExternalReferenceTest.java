@@ -1,13 +1,10 @@
 package com.nfl.dm.shield.dynamic.service;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertFalse;
 
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class ExternalReferenceTest extends BaseExternalReferenceTest {
 
     private static final String SIMON = "Simon";

@@ -2,12 +2,10 @@ package com.nfl.dm.shield.dynamic.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.InstanceBaseBeanTest;
 import com.nfl.dm.shield.dynamic.security.SchemaWriteAccess;
 import graphql.ErrorType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.Test;
 
 import java.time.Instant;
@@ -20,7 +18,6 @@ import static org.testng.Assert.*;
 
 @SuppressWarnings("unused")
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class GraphQLInstanceServiceTest extends InstanceBaseBeanTest {
 
     private static final Map<String, Object> VARIABLE_MAP = buildVariableMap(INSTANCE_NAME_SPACE, JOHN_CARTER_SCHEMA);
@@ -120,7 +117,7 @@ public class GraphQLInstanceServiceTest extends InstanceBaseBeanTest {
         assertEquals(result.getData().toString(), expectedResult);
     }
 
-    public void instanceCanReferArrayOfInstancesOfTheSameType() throws Exception {
+    public void instanceCanReferArrayOfInstancesOfTheSameType() {
         addInstance(addJohnCarterInstance, addJohnCarterInstanceResults);
         addInstance(addJohnCarterInstanceReferringJohnCarter, viewJohnCarterInstanceReferringJohnCarter);
     }
@@ -228,14 +225,14 @@ public class GraphQLInstanceServiceTest extends InstanceBaseBeanTest {
         addInstance("mutation  { removeAllInstances { count }}", "{removeAllInstances={count=1}}");
     }
 
-    public void findSchemaInstanceWithSchemaInstanceKey() throws Exception{
+    public void findSchemaInstanceWithSchemaInstanceKey() {
        GraphQLResult result = instanceService.executeQuery(viewSkibobWithSchemaInstanceKey, buildVariableMap("skibob"),
                 buildSchemaWriteAccess(), DEFAULT_MAX_RECURSE_DEPTH);
         assertTrue(result.isSuccessful());
         assertEquals(result.getData().toString(), viewSkibobWithSchemaInstanceKeyResult);
     }
 
-    public void testUpdatedDate() throws Exception {
+    public void testUpdatedDate() {
         String baldy = "{viewer={instances={edges=[{node={id=ski_ski_ski, resort=baldy}}]}}}";
         Map<String, Object> variableMap = buildVariableMap("skibob");
 

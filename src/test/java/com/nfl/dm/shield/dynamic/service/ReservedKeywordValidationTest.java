@@ -1,9 +1,7 @@
 package com.nfl.dm.shield.dynamic.service;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
@@ -11,7 +9,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 
 @Test
-@ContextConfiguration(classes = ApplicationTestConfig.class)
 public class ReservedKeywordValidationTest extends BaseBeanTest {
 
     private final String userReservedKeywordErrorResult;
@@ -27,7 +24,7 @@ public class ReservedKeywordValidationTest extends BaseBeanTest {
         userReservedKeywordErrorResult = loadFromFile("graphql/validation/add_schema_with_reserved_field_name_result.txt");
     }
 
-    public void shouldNotCreateSchemaWithDomainFieldNameId() throws Exception {
+    public void shouldNotCreateSchemaWithDomainFieldNameId() {
         GraphQLResult result = schemaService.executeQuery(withIdFieldName,
                 buildSchemaVariableMap(), buildSchemaWriteAccess());
 
@@ -35,7 +32,7 @@ public class ReservedKeywordValidationTest extends BaseBeanTest {
         assertEquals(result.getErrors().get(0).getMessage(), userReservedKeywordErrorResult);
     }
 
-    public void shouldNotCreateSchemaWithDomainFieldNameReferencedByKeyword() throws Exception {
+    public void shouldNotCreateSchemaWithDomainFieldNameReferencedByKeyword() {
         GraphQLResult result = schemaService.executeQuery(withReferencedBy,
                 buildSchemaVariableMap(), buildSchemaWriteAccess());
 
