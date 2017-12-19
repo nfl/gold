@@ -8,6 +8,7 @@ import com.nfl.dm.shield.dynamic.domain.schema.SchemaKey;
 import com.nfl.dm.shield.dynamic.service.DataFetcherFactory;
 import com.nfl.dm.shield.dynamic.service.InstanceOutputTypeService;
 import com.nfl.graphql.mediator.GraphQLMediator;
+import graphql.schema.GraphQLOutputType;
 import org.testng.annotations.Test;
 
 import java.util.HashMap;
@@ -83,7 +84,7 @@ public class OtherDynamicDomainTypeTest {
             }
 
             @Override
-            public GraphQLMediator buildMediator() {
+            public GraphQLOutputType deriveFromExternalTypeName(String typeName) {
                 throw new UnsupportedOperationException();
             }
 

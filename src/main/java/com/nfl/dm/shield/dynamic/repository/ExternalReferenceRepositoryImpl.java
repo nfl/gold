@@ -7,6 +7,7 @@ import graphql.language.Field;
 import graphql.language.InlineFragment;
 import graphql.language.Selection;
 import graphql.language.SelectionSet;
+import graphql.schema.GraphQLOutputType;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -44,7 +45,12 @@ public class ExternalReferenceRepositoryImpl implements ExternalReferenceReposit
         this.baseURLTemplate = baseURLTemplate;
     }
 
-    public GraphQLMediator buildMediator(String authHeader) {
+    @Override
+    public GraphQLOutputType deriveFromExternalTypeName(String typeName, String authHeader) {
+        return buildMediator(authHeader).retrieveOutputDescription(typeName);
+    }
+
+    private GraphQLMediator buildMediator(String authHeader) {
         if (mediator != null) {
             return mediator;
         }
