@@ -57,7 +57,7 @@ public class ExternalReferenceType extends AbstractReferenceType {
     Map<String, GraphQLObjectType> buildPossibleTypeMap(List<String> possibleTypes, InstanceFieldBuilderContext instanceFieldBuilderContext, InstanceOutputTypeService instanceOutputTypeService) {
         Map<String, GraphQLObjectType> retMap = new HashMap<>(89);
         possibleTypes.forEach(possible -> retMap.put(possible,
-                (GraphQLObjectType) instanceOutputTypeService.buildMediator().retrieveOutputDescription(possible)));
+                (GraphQLObjectType) instanceOutputTypeService.deriveFromExternalTypeName(possible)));
         return retMap;
     }
 

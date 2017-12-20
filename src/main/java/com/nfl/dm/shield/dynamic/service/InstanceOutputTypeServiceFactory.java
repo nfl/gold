@@ -9,7 +9,7 @@ import com.nfl.dm.shield.dynamic.domain.schema.SchemaKey;
 import com.nfl.dm.shield.dynamic.repository.ExternalReferenceRepository;
 import com.nfl.dm.shield.dynamic.repository.SchemaInstanceRepository;
 import com.nfl.dm.shield.dynamic.repository.SchemaRepository;
-import com.nfl.graphql.mediator.GraphQLMediator;
+import graphql.schema.GraphQLOutputType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -87,11 +87,6 @@ public class InstanceOutputTypeServiceFactory {
         }
 
         @Override
-        public List<SchemaDescription> findRelatedSchemas(SchemaDescription schemaDescription) {
-            return schemaService.findDirectRelatedSchemas(schemaDescription);
-        }
-
-        @Override
         public SchemaDescription findSchemaDescriptionByName(SchemaKey schemaKey) {
             return schemaDefinitionPreloadCache.computeIfAbsent(
                     schemaKey,
@@ -124,8 +119,8 @@ public class InstanceOutputTypeServiceFactory {
         }
 
         @Override
-        public GraphQLMediator buildMediator() {
-            return externalReferenceRepository.buildMediator(authHeader);
+        public GraphQLOutputType deriveFromExternalTypeName(String typeName) {
+            return externalReferenceRepository.deriveFromExternalTypeName(typeName, authHeader);
         }
 
         @Override
