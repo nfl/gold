@@ -59,11 +59,6 @@ public class OtherDynamicDomainTypeTest {
         return new InstanceOutputTypeService() {
 
             @Override
-            public List<SchemaDescription> findRelatedSchemas(SchemaDescription schemaDescription) {
-                return null;
-            }
-
-            @Override
             public SchemaDescription findSchemaDescriptionByName(SchemaKey schemaKey) {
                 return null;
             }

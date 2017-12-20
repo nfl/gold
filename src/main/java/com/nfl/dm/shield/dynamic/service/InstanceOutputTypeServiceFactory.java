@@ -87,11 +87,6 @@ public class InstanceOutputTypeServiceFactory {
         }
 
         @Override
-        public List<SchemaDescription> findRelatedSchemas(SchemaDescription schemaDescription) {
-            return schemaService.findDirectRelatedSchemas(schemaDescription);
-        }
-
-        @Override
         public SchemaDescription findSchemaDescriptionByName(SchemaKey schemaKey) {
             return schemaDefinitionPreloadCache.computeIfAbsent(
                     schemaKey,

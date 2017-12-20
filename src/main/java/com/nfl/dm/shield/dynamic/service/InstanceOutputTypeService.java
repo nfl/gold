@@ -11,8 +11,6 @@ import java.util.Map;
 
 public interface InstanceOutputTypeService {
 
-    List<SchemaDescription> findRelatedSchemas(SchemaDescription schemaDescription);
-
     SchemaDescription findSchemaDescriptionByName(SchemaKey schemaKey);
 
     SchemaInstance findSchemaInstance(SchemaInstanceKey schemaInstanceKey, String id);
