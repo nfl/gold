@@ -27,7 +27,6 @@ public class StubbedExternalReferenceRepository implements ExternalReferenceRepo
 
     private final GraphQLOutputType emptyType = buildType("empty", Collections.emptyMap());
 
-    @Autowired
     public StubbedExternalReferenceRepository()
     {
     }
@@ -77,7 +76,7 @@ public class StubbedExternalReferenceRepository implements ExternalReferenceRepo
 
         return GraphQLObjectType.newObject()
                 .name(typeName)
-                .description("Test External: " + typeName)
+                .description("Example External: " + typeName)
                 .fields(schemaDefFields)
                 .build();
     }
