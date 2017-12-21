@@ -13,6 +13,7 @@ import org.springframework.util.CollectionUtils;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.nfl.dm.shield.dynamic.config.HashConfig.DEFAULT_HASH_TABLE_SIZE;
 import static graphql.Scalars.GraphQLString;
 import static graphql.schema.GraphQLEnumType.newEnum;
 import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
@@ -46,7 +47,7 @@ public class SchemaInstanceField {
 
     private String otherTypeName = "";
 
-    private List<EnumValueDef> enumValues = new ArrayList<>(89);
+    private List<EnumValueDef> enumValues = new ArrayList<>(DEFAULT_HASH_TABLE_SIZE);
 
     private String serviceKey;
 

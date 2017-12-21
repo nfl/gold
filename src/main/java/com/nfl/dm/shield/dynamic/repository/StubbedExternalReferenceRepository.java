@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static com.nfl.dm.shield.dynamic.config.HashConfig.DEFAULT_HASH_TABLE_SIZE;
 import static com.nfl.dm.shield.dynamic.domain.schema.instancefield.AbstractReferenceType.REFERENCE_ID;
 import static com.nfl.dm.shield.dynamic.domain.schema.instancefield.AbstractReferenceType.REFERENCE_TYPE;
 
@@ -21,7 +22,7 @@ public class StubbedExternalReferenceRepository implements ExternalReferenceRepo
     private final GraphQLMediator mediator;
 
     private final Map<String, Map<String, Map<String, Object>>> externalInstances
-            = new ConcurrentHashMap<>(89);
+            = new ConcurrentHashMap<>(DEFAULT_HASH_TABLE_SIZE);
 
     @Autowired
     public StubbedExternalReferenceRepository(GraphQLMediator mediator) {
@@ -46,7 +47,7 @@ public class StubbedExternalReferenceRepository implements ExternalReferenceRepo
 
     public void loadExternalInstance(String typeName, String id, Map<String, Object> instance) {
         if (!externalInstances.containsKey(typeName)) {
-            externalInstances.put(typeName, new HashMap<>(89));
+            externalInstances.put(typeName, new HashMap<>(DEFAULT_HASH_TABLE_SIZE));
         }
         externalInstances.get(typeName).put(id, instance);
     }

@@ -14,6 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static com.nfl.dm.shield.dynamic.config.HashConfig.DEFAULT_HASH_TABLE_SIZE;
 import static com.nfl.dm.shield.dynamic.domain.schema.instancefield.SchemaInstanceField.MEMBER_TYPE_FIELD;
 import static graphql.Scalars.GraphQLID;
 import static graphql.Scalars.GraphQLLong;
@@ -63,13 +64,13 @@ public class SchemaDescription {
 
     private IdGeneration idGeneration = IdGeneration.SERVICE_GENERATED_GUID;
 
-    private List<SchemaInstanceField> domainFields = new ArrayList<>(89);
+    private List<SchemaInstanceField> domainFields = new ArrayList<>(DEFAULT_HASH_TABLE_SIZE);
 
-    private List<ValueObjectField> valueDefinitions = new ArrayList<>(89);
+    private List<ValueObjectField> valueDefinitions = new ArrayList<>(DEFAULT_HASH_TABLE_SIZE);
 
     private String memberConfiguration;
 
-    private List<FilterConfiguration> filterConfigurations = new ArrayList<>(89);
+    private List<FilterConfiguration> filterConfigurations = new ArrayList<>(DEFAULT_HASH_TABLE_SIZE);
 
     public SchemaDescription() {
     }
@@ -94,7 +95,7 @@ public class SchemaDescription {
     }
 
     private void initValuesDefinitions(List<Map<String, Object>> valueDefinitions, InstanceOutputTypeService instanceOutputTypeService) {
-        setValueDefinitions(new ArrayList<>(89));
+        setValueDefinitions(new ArrayList<>(DEFAULT_HASH_TABLE_SIZE));
         valueDefinitions.forEach(valueDef -> addValueDefinition(new ValueObjectField(this, valueDef, instanceOutputTypeService)));
     }
 
