@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import static com.nfl.dm.shield.dynamic.config.HashConfig.DEFAULT_HASH_TABLE_SIZE;
+
 public class SchemaWriteAccess {
 
     public static final String SCHEMA_MODIFY = "SCHEMA_MODIFY";
@@ -13,7 +15,7 @@ public class SchemaWriteAccess {
 
     private final String authHeader;
 
-    private final Map<String, Set<String>> permissions = new HashMap<>(89);
+    private final Map<String, Set<String>> permissions = new HashMap<>(DEFAULT_HASH_TABLE_SIZE);
 
     public SchemaWriteAccess() {
         authHeader = "Testing only.";
@@ -27,7 +29,7 @@ public class SchemaWriteAccess {
 
         // Initialize
         if (!permissions.containsKey(namespace)) {
-            permissions.put(namespace, new HashSet<>(89));
+            permissions.put(namespace, new HashSet<>(DEFAULT_HASH_TABLE_SIZE));
         }
 
         permissions.get(namespace).add(permissionName);

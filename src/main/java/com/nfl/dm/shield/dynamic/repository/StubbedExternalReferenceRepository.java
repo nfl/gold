@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static com.nfl.dm.shield.dynamic.config.HashConfig.DEFAULT_HASH_TABLE_SIZE;
 import static com.nfl.dm.shield.dynamic.domain.schema.instancefield.AbstractReferenceType.REFERENCE_ID;
 import static com.nfl.dm.shield.dynamic.domain.schema.instancefield.AbstractReferenceType.REFERENCE_TYPE;
 import static graphql.Scalars.GraphQLID;
@@ -21,7 +22,7 @@ import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
 public class StubbedExternalReferenceRepository implements ExternalReferenceRepository {
 
     private final Map<String, Map<String, Map<String, Object>>> externalInstances
-            = new ConcurrentHashMap<>(89);
+            = new ConcurrentHashMap<>(DEFAULT_HASH_TABLE_SIZE);
 
     private final Map<String, GraphQLOutputType> outputTypeMap = new ConcurrentHashMap<>(89);
 
@@ -54,7 +55,7 @@ public class StubbedExternalReferenceRepository implements ExternalReferenceRepo
 
     public void loadExternalInstance(String typeName, String id, Map<String, Object> instance) {
         if (!externalInstances.containsKey(typeName)) {
-            externalInstances.put(typeName, new HashMap<>(89));
+            externalInstances.put(typeName, new HashMap<>(DEFAULT_HASH_TABLE_SIZE));
         }
         externalInstances.get(typeName).put(id, instance);
 

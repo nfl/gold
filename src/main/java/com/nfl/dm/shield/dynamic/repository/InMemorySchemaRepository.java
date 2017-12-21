@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static com.google.common.collect.Lists.transform;
+import static com.nfl.dm.shield.dynamic.config.HashConfig.DEFAULT_HASH_TABLE_SIZE;
 import static com.nfl.dm.shield.dynamic.domain.instance.SchemaInstance.UPDATE_DATE_FIELD;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.emptyMap;
@@ -25,10 +26,10 @@ import static java.util.stream.Collectors.toList;
 public class InMemorySchemaRepository extends BaseRepositoryImpl
         implements SchemaRepository, SchemaInstanceRepository {
 
-    private final Map<SchemaKey, InMemorySchemaDescriptionHolder> allTheSchemas = new ConcurrentHashMap<>(89);
+    private final Map<SchemaKey, InMemorySchemaDescriptionHolder> allTheSchemas = new ConcurrentHashMap<>(DEFAULT_HASH_TABLE_SIZE);
 
     private final Map<SchemaInstanceKey, Map<String, InMemorySchemaInstanceHolder>> instances
-            = new ConcurrentHashMap<>(89);
+            = new ConcurrentHashMap<>(DEFAULT_HASH_TABLE_SIZE);
 
     public InMemorySchemaRepository() {
     }
@@ -137,7 +138,7 @@ public class InMemorySchemaRepository extends BaseRepositoryImpl
     }
 
     private Map<String, InMemorySchemaInstanceHolder> initInstance(SchemaInstanceKey schemaInstanceKey) {
-        Map<String, InMemorySchemaInstanceHolder> retMap = new ConcurrentHashMap<>(89);
+        Map<String, InMemorySchemaInstanceHolder> retMap = new ConcurrentHashMap<>(DEFAULT_HASH_TABLE_SIZE);
         instances.put(schemaInstanceKey, retMap);
         return retMap;
     }
