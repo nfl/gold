@@ -18,7 +18,6 @@ import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
 
 @SuppressWarnings("unused")
 @Service("stubbedExternal")
-@Primary
 public class StubbedExternalReferenceRepository implements ExternalReferenceRepository {
 
     private final Map<String, Map<String, Map<String, Object>>> externalInstances
