@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import static com.nfl.dm.shield.dynamic.config.HashConfig.DEFAULT_HASH_TABLE_SIZE;
 import static graphql.Scalars.GraphQLString;
 import static graphql.schema.GraphQLFieldDefinition.newFieldDefinition;
 import static graphql.schema.GraphQLInputObjectField.newInputObjectField;
@@ -24,7 +25,7 @@ public class ValueObjectField {
 
     private String name;
 
-    private List<SchemaInstanceField> valueFields = new ArrayList<>(89);
+    private List<SchemaInstanceField> valueFields = new ArrayList<>(DEFAULT_HASH_TABLE_SIZE);
 
     public ValueObjectField() {
         // For persistence

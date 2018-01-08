@@ -4,14 +4,12 @@ import com.nfl.dm.shield.dynamic.domain.instance.SchemaInstance;
 import com.nfl.dm.shield.dynamic.domain.instance.SchemaInstanceKey;
 import com.nfl.dm.shield.dynamic.domain.schema.SchemaDescription;
 import com.nfl.dm.shield.dynamic.domain.schema.SchemaKey;
-import com.nfl.graphql.mediator.GraphQLMediator;
+import graphql.schema.GraphQLOutputType;
 
 import java.util.List;
 import java.util.Map;
 
 public interface InstanceOutputTypeService {
-
-    List<SchemaDescription> findRelatedSchemas(SchemaDescription schemaDescription);
 
     SchemaDescription findSchemaDescriptionByName(SchemaKey schemaKey);
 
@@ -21,7 +19,7 @@ public interface InstanceOutputTypeService {
 
     SchemaInstance findMultiTypeById(SchemaInstanceKey schemaInstanceKey, Map<String, Object> id);
 
-    GraphQLMediator buildMediator();
+    GraphQLOutputType deriveFromExternalTypeName(String typeName);
 
     DataFetcherFactory getDataFetcherFactory();
 

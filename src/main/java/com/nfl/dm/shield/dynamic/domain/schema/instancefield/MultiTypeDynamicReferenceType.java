@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.nfl.dm.shield.dynamic.config.HashConfig.DEFAULT_HASH_TABLE_SIZE;
 import static com.nfl.dm.shield.dynamic.domain.BaseKey.SCHEMA_NAME_FIELD;
 import static com.nfl.dm.shield.dynamic.domain.instance.SchemaInstance.SCHEMA_INSTANCE_KEY_FIELD;
 import static graphql.Scalars.GraphQLID;
@@ -60,7 +61,7 @@ public class MultiTypeDynamicReferenceType extends AbstractReferenceType {
     Map<String, GraphQLObjectType> buildPossibleTypeMap(List<String> possibleTypes,
                                                         InstanceFieldBuilderContext instanceFieldBuilderContext,
                                                         InstanceOutputTypeService instanceOutputTypeService) {
-        Map<String, GraphQLObjectType> retMap = new HashMap<>(89);
+        Map<String, GraphQLObjectType> retMap = new HashMap<>(DEFAULT_HASH_TABLE_SIZE);
         possibleTypes.forEach(possible -> {
             SchemaKey schemaKey = new SchemaKey(possible, instanceFieldBuilderContext.getSchemaNamespace());
             SchemaDescription schemaDescription = instanceOutputTypeService.findSchemaDescriptionByName(schemaKey);

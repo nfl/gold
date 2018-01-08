@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.nfl.dm.shield.dynamic.config.HashConfig.DEFAULT_HASH_TABLE_SIZE;
 import static graphql.Scalars.GraphQLID;
 import static graphql.Scalars.GraphQLString;
 import static graphql.schema.GraphQLInputObjectField.newInputObjectField;
@@ -55,9 +56,9 @@ public class ExternalReferenceType extends AbstractReferenceType {
 
     @Override
     Map<String, GraphQLObjectType> buildPossibleTypeMap(List<String> possibleTypes, InstanceFieldBuilderContext instanceFieldBuilderContext, InstanceOutputTypeService instanceOutputTypeService) {
-        Map<String, GraphQLObjectType> retMap = new HashMap<>(89);
+        Map<String, GraphQLObjectType> retMap = new HashMap<>(DEFAULT_HASH_TABLE_SIZE);
         possibleTypes.forEach(possible -> retMap.put(possible,
-                (GraphQLObjectType) instanceOutputTypeService.buildMediator().retrieveOutputDescription(possible)));
+                (GraphQLObjectType) instanceOutputTypeService.deriveFromExternalTypeName(possible)));
         return retMap;
     }
 

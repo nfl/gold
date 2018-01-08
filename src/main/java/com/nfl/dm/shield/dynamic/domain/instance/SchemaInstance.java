@@ -2,6 +2,8 @@ package com.nfl.dm.shield.dynamic.domain.instance;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+import static com.nfl.dm.shield.dynamic.config.HashConfig.*;
+
 public class SchemaInstance implements Map<String, Object> {
 
     public static final String ID = "id";
@@ -12,7 +14,7 @@ public class SchemaInstance implements Map<String, Object> {
 
     public static final String UPDATE_DATE_FIELD = "updateDate";
 
-    private Map<String, Object> fieldValues = new ConcurrentHashMap<>(89);
+    private Map<String, Object> fieldValues = new ConcurrentHashMap<>(DEFAULT_HASH_TABLE_SIZE);
 
     private SchemaInstanceKey schemaInstanceKey;
 
