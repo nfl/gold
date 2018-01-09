@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
@@ -25,7 +24,6 @@ import static com.nfl.dm.shield.dynamic.domain.BaseKey.*;
 
 
 @ContextConfiguration(classes = ApplicationTestConfig.class)
-@ActiveProfiles("gold_test")
 public abstract class BaseBeanTest extends AbstractTestNGSpringContextTests {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
