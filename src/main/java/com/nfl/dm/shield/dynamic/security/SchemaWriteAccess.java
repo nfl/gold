@@ -40,7 +40,7 @@ public class SchemaWriteAccess {
     }
 
     @SuppressWarnings("unused")
-    public int countPerms() {
+    public int countPermissions() {
         return permissions.size();
     }
 
