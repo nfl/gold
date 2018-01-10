@@ -39,7 +39,8 @@ public class SchemaWriteAccess {
         return permissions.containsKey(namespace) && permissions.get(namespace).contains(permissionName);
     }
 
-    int countPerms() {
+    @SuppressWarnings("unused")
+    public int countPerms() {
         return permissions.size();
     }
 
