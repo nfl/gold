@@ -1,19 +1,16 @@
 package com.nfl.dm.shield.dynamic.service;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.InstanceBaseBeanTest;
 import com.nfl.dm.shield.dynamic.security.SchemaWriteAccess;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.Test;
 
 import java.util.Map;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertTrue;
 
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
-public class MutualReferenceTest  extends InstanceBaseBeanTest {
+public class MutualReferenceTest extends InstanceBaseBeanTest {
 
     @SuppressWarnings("SpringJavaAutowiredMembersInspection")
     @Autowired

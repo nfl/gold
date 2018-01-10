@@ -1,18 +1,16 @@
 package com.nfl.dm.shield.dynamic.service;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import com.nfl.dm.shield.dynamic.security.SchemaWriteAccess;
 import graphql.ErrorType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.*;
 
 import java.util.Map;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class MultiTypeDynamicReferenceTest extends BaseBeanTest {
 
     @Autowired
@@ -86,7 +84,7 @@ public class MultiTypeDynamicReferenceTest extends BaseBeanTest {
     }
 
     @BeforeClass
-    private void setupSchemas() throws Exception {
+    private void setupSchemas() {
         Map<String, Object> schemaVariableMap = buildSchemaVariableMap();
         GraphQLResult result;
         result = schemaService.executeQuery(addPhoto, schemaVariableMap, writeAccess);
@@ -106,7 +104,7 @@ public class MultiTypeDynamicReferenceTest extends BaseBeanTest {
     }
 
     @BeforeMethod
-    private void setupInstances() throws Exception {
+    private void setupInstances() {
         GraphQLResult result;
 
         result = upsert(DOG, addDogInstance);
@@ -120,13 +118,13 @@ public class MultiTypeDynamicReferenceTest extends BaseBeanTest {
     }
 
     @Test
-    public void addMediaInstanceWithPhotoReference() throws Exception {
+    public void addMediaInstanceWithPhotoReference() {
         GraphQLResult result = upsert(MEDIA, addPhotoMediaInstance);
         assertResult(result, addMediaInstanceResult);
     }
 
     @Test
-    public void addPhotoMediaInstanceAndThenReplaceItToVideo() throws Exception {
+    public void addPhotoMediaInstanceAndThenReplaceItToVideo() {
         GraphQLResult result = upsert(MEDIA, addPhotoMediaInstance);
         assertResult(result, addMediaInstanceResult);
 
@@ -136,13 +134,13 @@ public class MultiTypeDynamicReferenceTest extends BaseBeanTest {
     }
 
     @Test
-    public void addLibraryInstanceWhichStoresPhotoAndVideos() throws Exception {
+    public void addLibraryInstanceWhichStoresPhotoAndVideos() {
         GraphQLResult result = upsert(LIBRARY, addLibraryInstance);
         assertResult(result, addLibraryInstanceResult);
     }
 
     @Test
-    public void removeVideoFromLibrary() throws Exception {
+    public void removeVideoFromLibrary() {
         GraphQLResult result = upsert(LIBRARY, addLibraryInstance);
         assertResult(result, addLibraryInstanceResult);
 
@@ -154,13 +152,13 @@ public class MultiTypeDynamicReferenceTest extends BaseBeanTest {
     }
 
     @Test
-    public void addMediaInstanceWithBadReference() throws Exception {
+    public void addMediaInstanceWithBadReference() {
         GraphQLResult result = upsert(MEDIA, addBadMediaRef);
         assertResult(result, addBadMediaRefResult);
     }
 
     @Test
-    public void addMediaInstanceWithWrongTypeDefinition() throws Exception {
+    public void addMediaInstanceWithWrongTypeDefinition() {
         GraphQLResult result = upsert(MEDIA, mediaInstanceWithWrongType);
 
         assertFalse(result.isSuccessful());
@@ -181,7 +179,7 @@ public class MultiTypeDynamicReferenceTest extends BaseBeanTest {
 
 
     @AfterClass
-    public void tearDown() throws Exception {
+    public void tearDown() {
         inMemorySchemaRepository.clearForSchemaTesting();
     }
 }

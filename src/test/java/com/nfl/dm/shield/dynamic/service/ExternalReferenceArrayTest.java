@@ -1,11 +1,8 @@
 package com.nfl.dm.shield.dynamic.service;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.Test;
 
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class ExternalReferenceArrayTest extends BaseExternalReferenceTest {
 
     private static final String SIMON = "Simon";

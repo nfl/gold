@@ -1,18 +1,13 @@
 package com.nfl.dm.shield.dynamic.service;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 @Test
-@ContextConfiguration(classes = ApplicationTestConfig.class)
 public class SchemaDescriptionNameValidationTest extends BaseBeanTest {
     private final String withNotValidSchemaDescriptionName;
     private final String withNotValidSchemaDescriptionNameResult;

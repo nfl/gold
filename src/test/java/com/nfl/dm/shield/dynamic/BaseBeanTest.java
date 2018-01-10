@@ -100,13 +100,13 @@ public abstract class BaseBeanTest extends AbstractTestNGSpringContextTests {
         }
     }
 
-    protected void assertSuccess(GraphQLResult actual) throws Exception {
+    protected void assertSuccess(GraphQLResult actual) {
         Assert.assertNotNull(actual, "Actual GraphQLResult should not be null.");
         Assert.assertTrue(actual.isSuccessful());
     }
 
 
-    protected GraphQLResult executeSchemaQuery(String query) throws Exception {
+    protected GraphQLResult executeSchemaQuery(String query) {
         GraphQLResult graphQLResult = schemaService.executeQuery(query,
                 buildSchemaVariableMap(), buildSchemaWriteAccess());
         if (log.isDebugEnabled()) {

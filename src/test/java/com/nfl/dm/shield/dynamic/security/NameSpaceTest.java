@@ -1,12 +1,10 @@
 package com.nfl.dm.shield.dynamic.security;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import com.nfl.dm.shield.dynamic.service.GraphQLInstanceService;
 import com.nfl.dm.shield.dynamic.service.GraphQLResult;
 import com.nfl.dm.shield.dynamic.service.GraphQLSchemaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
@@ -16,7 +14,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class NameSpaceTest extends BaseBeanTest {
 
     private static final String PAINT_SCHEMA_NAME = "Paint";

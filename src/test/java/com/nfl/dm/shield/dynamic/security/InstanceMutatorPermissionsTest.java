@@ -1,6 +1,5 @@
 package com.nfl.dm.shield.dynamic.security;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import com.nfl.dm.shield.dynamic.exception.UnauthorizedException;
 import com.nfl.dm.shield.dynamic.service.GraphQLInstanceService;
@@ -8,7 +7,6 @@ import com.nfl.dm.shield.dynamic.service.GraphQLResult;
 import com.nfl.dm.shield.dynamic.service.GraphQLSchemaService;
 import graphql.ExceptionWhileDataFetching;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
@@ -18,7 +16,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.Assert.*;
 
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class InstanceMutatorPermissionsTest extends BaseBeanTest {
 
     private static final String PAINT_SCHEMA_NAME = "Paint";
@@ -103,7 +100,7 @@ public class InstanceMutatorPermissionsTest extends BaseBeanTest {
     }
 
     @Test
-    public void removeExistingPaintInstanceWithoutPermissions() throws Exception {
+    public void removeExistingPaintInstanceWithoutPermissions() {
         SchemaWriteAccess perms = new SchemaWriteAccess();
         perms.addPermission(SCHEMA_NAME_SPACE, SchemaWriteAccess.SCHEMA_MODIFY);
         perms.addPermission(MUTATOR_NAME_SPACE, SchemaWriteAccess.INSTANCE_MODIFY);
@@ -125,7 +122,7 @@ public class InstanceMutatorPermissionsTest extends BaseBeanTest {
     }
 
     @Test
-    public void upsertPaintInstanceWithoutPermissions() throws Exception {
+    public void upsertPaintInstanceWithoutPermissions() {
         SchemaWriteAccess perms = new SchemaWriteAccess();
         perms.addPermission(SCHEMA_NAME_SPACE, SchemaWriteAccess.SCHEMA_MODIFY);
 
@@ -143,7 +140,7 @@ public class InstanceMutatorPermissionsTest extends BaseBeanTest {
     }
 
     @Test
-    public void removeAllPaintInstancesWithoutPetitions() throws Exception {
+    public void removeAllPaintInstancesWithoutPetitions() {
         SchemaWriteAccess perms = new SchemaWriteAccess();
         perms.addPermission(SCHEMA_NAME_SPACE, SchemaWriteAccess.SCHEMA_MODIFY);
         perms.addPermission(MUTATOR_NAME_SPACE, SchemaWriteAccess.INSTANCE_MODIFY);

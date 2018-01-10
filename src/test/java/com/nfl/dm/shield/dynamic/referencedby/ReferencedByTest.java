@@ -1,6 +1,5 @@
 package com.nfl.dm.shield.dynamic.referencedby;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import com.nfl.dm.shield.dynamic.security.SchemaWriteAccess;
 import com.nfl.dm.shield.dynamic.service.CacheService;
@@ -10,7 +9,6 @@ import com.nfl.dm.shield.dynamic.service.GraphQLSchemaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -21,7 +19,6 @@ import static org.testng.Assert.assertTrue;
 
 
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class ReferencedByTest extends BaseBeanTest {
     // Variables to contain queries for the Schema Definitions used for the tests
     private final String videoSchema;

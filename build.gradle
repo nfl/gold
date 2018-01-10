@@ -80,6 +80,9 @@ publishing {
             artifact javadocJar {
                 classifier "javadoc"
             }
+            artifact testJar {
+                classifier "tests"
+            }
 
             pom.withXml {
                 asNode().children().last() + {
@@ -157,9 +160,15 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
+task testJar(type: Jar) {
+    classifier = 'tests'
+    from sourceSets.test.output+sourceSets.test.allSource
+}
+
 artifacts {
     archives sourcesJar
     archives javadocJar
+    archives testJar
 }
 
 jar {

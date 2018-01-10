@@ -1,9 +1,7 @@
 package com.nfl.dm.shield.dynamic.service;
 
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
@@ -11,7 +9,6 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 
 @Test
-@ContextConfiguration(classes = ApplicationTestConfig.class)
 public class MemberFieldNameValidationTest extends BaseBeanTest {
     private final String withEmptyMemberFieldName;
     private final String withEmptyMemberFieldNameResult;

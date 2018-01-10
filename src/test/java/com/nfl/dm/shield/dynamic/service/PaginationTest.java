@@ -2,13 +2,13 @@ package com.nfl.dm.shield.dynamic.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
-import com.nfl.dm.shield.dynamic.ApplicationTestConfig;
 import com.nfl.dm.shield.dynamic.BaseBeanTest;
 import com.nfl.dm.shield.dynamic.security.SchemaWriteAccess;
 import net.minidev.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.util.List;
 import java.util.Map;
@@ -17,7 +17,6 @@ import static java.util.Arrays.asList;
 import static org.testng.Assert.*;
 
 @Test
-@ContextConfiguration(classes = {ApplicationTestConfig.class})
 public class PaginationTest extends BaseBeanTest {
 
     private static final String PAGED_TYPE_NAME = "paged";
