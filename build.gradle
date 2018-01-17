@@ -2,7 +2,6 @@ import java.text.SimpleDateFormat
 
 buildscript {
     repositories {
-        jcenter()
         mavenCentral()
         maven {
             url "http://repo.spring.io/libs-milestone"
@@ -29,7 +28,6 @@ targetCompatibility = 1.8
 
 repositories {
     mavenLocal()
-    jcenter()
     mavenCentral()
 }
 
