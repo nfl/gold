@@ -191,10 +191,8 @@ public class GraphQLInstanceService extends GraphQLBaseService {
                         .orElseThrow(() -> new IllegalStateException(
                                 "Filter Configuration's field does not match any existing field"));
 
-                GraphQLInputType graphQLInputType = field.getMemberType().fieldFactory(schemaDescription, field)
-                        .buildInstanceInputType(null);
-
-                return new GraphQLInputObjectField(filterConfiguration.getOutputFilterName(), graphQLInputType);
+                return new GraphQLInputObjectField(filterConfiguration.getOutputFilterName(),
+                                                   field.getSavedInputObjectType(null));
             }
         };
     }

@@ -127,7 +127,7 @@ public class FilterConfiguration {
             FilterConfiguration fc = new FilterConfiguration();
             fc.setFieldName((String) map.get(FIELD_NAME));
             fc.setOutputFilterName((String) map.get(FILTER_NAME));
-            fc.setFilterOperator((FilterOperator) map.get(FILTER_OPERATOR));
+            fc.setFilterOperator(FilterOperator.valueOf(map.get(FILTER_OPERATOR).toString()));
 
             return fc;
         }).collect(Collectors.toList());

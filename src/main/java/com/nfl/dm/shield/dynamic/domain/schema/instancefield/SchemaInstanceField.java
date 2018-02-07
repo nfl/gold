@@ -59,6 +59,8 @@ public class SchemaInstanceField {
 
     private SchemaDescription parent;
 
+    private GraphQLInputType savedInputType;
+
     public SchemaInstanceField() {
         // For persistence construction only.
     }
@@ -408,7 +410,7 @@ public class SchemaInstanceField {
     }
 
     public GraphQLInputObjectField buildGraphInputField(InstanceFieldBuilderContext instanceFieldBuilderContext) {
-        GraphQLInputType fieldType = buildInstanceInputType(instanceFieldBuilderContext);
+        GraphQLInputType fieldType = getSavedInputObjectType(instanceFieldBuilderContext);
         for (Constraint constraint : getConstraints()) {
             fieldType = constraint.wrapGraphQLTypeWithConstraint(fieldType);
         }
@@ -416,6 +418,14 @@ public class SchemaInstanceField {
                 .type(fieldType)
                 .name(getMemberFieldName())
                 .build();
+    }
+
+    public GraphQLInputType getSavedInputObjectType(InstanceFieldBuilderContext instanceFieldBuilderContext) {
+        if (savedInputType == null) {
+            savedInputType = buildInstanceInputType(instanceFieldBuilderContext);
+        }
+
+        return savedInputType;
     }
 
     public GraphQLInputType buildInstanceInputType(

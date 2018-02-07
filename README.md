@@ -114,7 +114,7 @@ Ex]
          memberType:        Integer,
          memberFieldName:   "filterableIntegerField"
        }],
-     filterConfiguration: [{
+     filterConfigurations: [{
          fieldName: "filterableStringField",
          filterName: "thisIsAStringFilter",
          filterOperator: EQUALS
