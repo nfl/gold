@@ -16,6 +16,11 @@ mutation  {
             name: "Green",
             value: "GREEN"
         }]
+    }],
+    filterConfigurations: [{
+        fieldName: "color",
+        filterName: "colorFilter",
+        filterOperator: EQUALS
     }]
   })
   {
