@@ -89,9 +89,9 @@ serialized to a string and is interpreted by the client for their purposes.
 
 ## Filter Configuration
 
-An optional *filterConfiguration* field provides a way to filter instances returned from root relay edges.
-*filterConfiguration* is set up on the schema side.
-Three fields need to be provided for *filterConfiguration*:
+An optional *filterConfigurations* field provides a way to filter instances returned from root relay edges.
+*filterConfigurations* is set up on the schema side.
+Three fields need to be provided for *filterConfigurations*:
 * *fieldName* field name (must be a literal type [String, Number, Boolean, Enum])
 * *filterName* name of the parameter to be provided on the relay object.
 * *filterOperator* operator that should be applied for the filtering.
