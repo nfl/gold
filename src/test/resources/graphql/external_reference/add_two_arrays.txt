@@ -1,0 +1,31 @@
+mutation  {
+  upsertSchemaDefinition(schemaDef: {
+    name: "MultipleExtRefArrays",
+    idGeneration: Client,
+    domainFields: [{
+        memberType:      Array,
+        memberFieldName: "shieldRef",
+        memberDescription: "A pointer to a shield image.",
+        arrayEntryType:  ExternalReference
+        serviceKey: SHIELD,
+        possibleTypes: ["Image", "Article", "Video"]
+    }, {
+        memberType:      Array,
+        memberFieldName: "audios",
+        memberDescription: "A pointer to a shield audio.",
+        arrayEntryType:  ExternalReference
+        serviceKey: SHIELD,
+        possibleTypes: ["Audio"]
+    }]
+  })
+  {
+    name,
+    domainFields {
+      memberType,
+      memberFieldName,
+      memberDescription,
+      serviceKey,
+      possibleTypes
+    }
+  }
+}

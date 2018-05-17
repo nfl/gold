@@ -46,6 +46,7 @@ public abstract class BaseExternalReferenceTest extends BaseBeanTest {
 
         final String IMAGE_ID = "1234";
         final String VIDEO_ID = "5678";
+        final String AUDIO_ID = "9";
 
         Map<String, Object> imageMap = new HashMap<>();
         imageMap.put("id", IMAGE_ID);
@@ -58,6 +59,13 @@ public abstract class BaseExternalReferenceTest extends BaseBeanTest {
         videoMap.put("caption", "The greatest movie ever.");
 
         externalReferenceRepository.loadExternalInstance("Video", VIDEO_ID, videoMap);
+
+        Map<String, Object> audioMap = new HashMap<>();
+        audioMap.put("id", AUDIO_ID);
+        audioMap.put("title", "Yesterday");
+        audioMap.put("codec", "FLAC");
+
+        externalReferenceRepository.loadExternalInstance("Audio", AUDIO_ID, audioMap);
     }
 
 
