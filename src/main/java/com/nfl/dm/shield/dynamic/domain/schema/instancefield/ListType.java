@@ -18,8 +18,6 @@ import static com.nfl.dm.shield.dynamic.domain.schema.instancefield.InstanceFiel
 @SuppressWarnings("WeakerAccess")
 public class ListType extends SchemaInstanceField {
 
-    private static final String BOGUS_PLACEHOLDER = "BogusPlaceholderToFoolValidation";
-
     public ListType(SchemaDescription parent, Map<String, Object> initValues) {
         super(InstanceFieldType.LIST, initValues, parent);
 
@@ -100,7 +98,7 @@ public class ListType extends SchemaInstanceField {
 
     private Map<String, Object> buildInitValuesMap() {
         Map<String, Object> initValues = new HashMap<>();
-        initValues.put(MEMBER_FIELD_NAME_FIELD, BOGUS_PLACEHOLDER);
+        initValues.put(MEMBER_FIELD_NAME_FIELD, getMemberFieldName());
 
         switch (getArrayEntryType()) {
             case OTHER_DYNAMIC_DOMAIN:

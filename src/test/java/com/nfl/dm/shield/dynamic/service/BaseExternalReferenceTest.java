@@ -26,14 +26,13 @@ public abstract class BaseExternalReferenceTest extends BaseBeanTest {
     @Autowired
     private StubbedExternalReferenceRepository externalReferenceRepository;
 
-    void loadSchema(String simonSchema, String simonSchemaResults) {
+    void loadSchema(String schema, String schemaResults) {
         // Set up the schema
-        assertFalse(simonSchema.isEmpty());
-        GraphQLResult result = graphQLSchemaService.executeQuery(simonSchema,
-                buildSchemaVariableMap(), buildSchemaWriteAccess());
+        assertFalse(schema.isEmpty());
+        GraphQLResult result = graphQLSchemaService.executeQuery(schema, buildSchemaVariableMap(), buildSchemaWriteAccess());
         assertTrue(result.isSuccessful());
         String actual = result.getData().toString();
-        Assert.assertEquals(actual, simonSchemaResults);
+        Assert.assertEquals(actual, schemaResults);
     }
 
     GraphQLResult loadErrorSchema(String errorSchema) {
