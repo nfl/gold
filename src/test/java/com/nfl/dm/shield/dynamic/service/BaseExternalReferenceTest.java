@@ -26,14 +26,13 @@ public abstract class BaseExternalReferenceTest extends BaseBeanTest {
     @Autowired
     private StubbedExternalReferenceRepository externalReferenceRepository;
 
-    void loadSchema(String simonSchema, String simonSchemaResults) {
+    void loadSchema(String schema, String schemaResults) {
         // Set up the schema
-        assertFalse(simonSchema.isEmpty());
-        GraphQLResult result = graphQLSchemaService.executeQuery(simonSchema,
-                buildSchemaVariableMap(), buildSchemaWriteAccess());
+        assertFalse(schema.isEmpty());
+        GraphQLResult result = graphQLSchemaService.executeQuery(schema, buildSchemaVariableMap(), buildSchemaWriteAccess());
         assertTrue(result.isSuccessful());
         String actual = result.getData().toString();
-        Assert.assertEquals(actual, simonSchemaResults);
+        Assert.assertEquals(actual, schemaResults);
     }
 
     GraphQLResult loadErrorSchema(String errorSchema) {
@@ -46,6 +45,7 @@ public abstract class BaseExternalReferenceTest extends BaseBeanTest {
 
         final String IMAGE_ID = "1234";
         final String VIDEO_ID = "5678";
+        final String AUDIO_ID = "9";
 
         Map<String, Object> imageMap = new HashMap<>();
         imageMap.put("id", IMAGE_ID);
@@ -58,6 +58,13 @@ public abstract class BaseExternalReferenceTest extends BaseBeanTest {
         videoMap.put("caption", "The greatest movie ever.");
 
         externalReferenceRepository.loadExternalInstance("Video", VIDEO_ID, videoMap);
+
+        Map<String, Object> audioMap = new HashMap<>();
+        audioMap.put("id", AUDIO_ID);
+        audioMap.put("title", "Yesterday");
+        audioMap.put("codec", "FLAC");
+
+        externalReferenceRepository.loadExternalInstance("Audio", AUDIO_ID, audioMap);
     }
 
 

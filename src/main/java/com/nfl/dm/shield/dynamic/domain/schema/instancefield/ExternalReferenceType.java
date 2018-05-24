@@ -51,7 +51,11 @@ public class ExternalReferenceType extends AbstractReferenceType {
 
     @Override
     public GraphQLOutputType buildInstanceOutputType(InstanceFieldBuilderContext instanceFieldBuilderContext, InstanceOutputTypeService instanceOutputTypeService) {
-        return createReferenceOutputType(instanceFieldBuilderContext, instanceOutputTypeService, getParent().getName() + getMemberFieldName() + "ShieldReference");
+        String typeName = getParent().getName() + getMemberFieldName() + "OutputExternalReference";
+        if (!instanceFieldBuilderContext.computeOutput(typeName)) {
+            return new GraphQLTypeReference(typeName);
+        }
+        return createReferenceOutputType(instanceFieldBuilderContext, instanceOutputTypeService, typeName);
     }
 
     @Override
@@ -72,6 +76,10 @@ public class ExternalReferenceType extends AbstractReferenceType {
 
     @Override
     public GraphQLInputType buildInstanceInputType(InstanceFieldBuilderContext instanceFieldBuilderContext) {
+        String typeName = getParent().getName() + getMemberFieldName() + "InputExternalReference";
+        if (!instanceFieldBuilderContext.computeOutput(typeName)) {
+            return new GraphQLTypeReference(typeName);
+        }
         GraphQLInputObjectField idField = newInputObjectField()
                 .type(new GraphQLNonNull(GraphQLID))
                 .name(REFERENCE_ID)
@@ -83,7 +91,7 @@ public class ExternalReferenceType extends AbstractReferenceType {
                 .build();
 
         return GraphQLInputObjectType.newInputObject()
-                .name(getParent().getName() + getMemberFieldName() + "ExternalReference")
+                .name(typeName)
                 .field(idField)
                 .field(typeDefinition)
                 .build();

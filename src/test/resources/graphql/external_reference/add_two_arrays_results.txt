@@ -1,0 +1,1 @@
+{upsertSchemaDefinition={name=MultipleExtRefArrays, domainFields=[{memberType=Array, memberFieldName=shieldRef, memberDescription=A pointer to a shield image., serviceKey=SHIELD, possibleTypes=[Image, Article, Video]}, {memberType=Array, memberFieldName=audios, memberDescription=A pointer to a shield audio., serviceKey=SHIELD, possibleTypes=[Audio]}]}}

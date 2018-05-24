@@ -267,31 +267,29 @@ the other fields are accepted in the mutation but are ignored. There has not bee
 namespaces at this time.
  
 ### ExternalReference
-Contains a reference to a domain object from another service.  Currently, only
-Shield domain objects are supported but the implementation could be easily extended
-to other services.
+Contains a reference to a domain object from another service.
 
-The external reference requires *serviceKey* to be set to _SHIELD_ and
+The external reference requires *serviceKey* to be non-empty and
 *possibleTypes* set to a collection of anticipated types.  *serviceKey* allows for a variety of external services
-in the future (such as "WEATHER" which could point to http://weather.gov).  Only the value of _SHIELD_ is
-currently supported.  A Shield example for *possibleTypes*
-would be ["Image", "Article", "Video"].
+in the future (such as "WEATHER" which could point to http://weather.gov).  An example for *possibleTypes*
+would be ["Image", "Article", "Video"] etc.
 
 When writing instances of dynamic domain object containing an external reference,
 the _id_ is compound one, containing both an *id* field and a *typeDefinition*
-field containing one of the configured values from *possibleTypes*.  For example, a Hero object having a reference
-to a shieldImage do the following upsert mutation:
+field containing one of the configured values from *possibleTypes*.  For example, a Hero object having an external reference
+to Image do the following upsert mutation:
 ```
 {
     id: 1234-hero-id,
-    shieldImage: {
-        id: 1234-shield-id,
+    heroHeadshotImage: {
+        id: 1234-some-id,
         typeDefinition: "Image"
     }
 }
 ```
 
-Upon the reading the value, the *shieldImage* field would appear to be an embedded shield image object.
+Upon the reading the value, the *heroHeadshotImage* field would appear to be an embedded object of an image
+as it is define in some GraphQL-based service.
 
 ### Struct
 Defines a "value" object, one that is stored as part of the dynamic domain
