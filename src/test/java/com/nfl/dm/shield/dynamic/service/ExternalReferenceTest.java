@@ -30,11 +30,11 @@ public class ExternalReferenceTest extends BaseExternalReferenceTest {
 
     public void resolveExternals() {
         // Add an external reference
-        GraphQLResult result = upsert(SIMON, simonInstance);
+        GraphQLResult result = execute(SIMON, simonInstance);
         assertResult(result, simonInstanceResults);
 
         // Do a normal instance query
-        result = upsert(SIMON, viewSimon);
+        result = execute(SIMON, viewSimon);
         assertResult(result, viewSimonResults);
     }
 

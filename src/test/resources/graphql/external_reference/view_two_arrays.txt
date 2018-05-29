@@ -1,0 +1,29 @@
+query {
+  viewer {
+      instances(first:1, after:"c2ltcGxlLWN1cnNvci0x") {
+        edges {
+          node {
+            id,
+            shieldRef {
+              ... on Image {
+                    id,
+                    title
+              },
+              ... on Video {
+                    id,
+                    title,
+                    caption
+              },
+            },
+            audios {
+              ... on Audio {
+                    id,
+                    title,
+                    codec
+              }
+            }
+          }
+        }
+      }
+  }
+}
