@@ -19,6 +19,8 @@ public class ExternalReferenceArrayTest extends BaseExternalReferenceTest {
     private final String addTwoArraysResults;
     private final String addTwoArraysInstance;
     private final String addTwoArraysInstanceResult;
+    private final String viewTwoArrays;
+    private final String viewTwoArraysResults;
 
     public ExternalReferenceArrayTest() {
         addSimonArray = loadFromFile("graphql/external_reference/add_simon_array.txt");
@@ -33,22 +35,28 @@ public class ExternalReferenceArrayTest extends BaseExternalReferenceTest {
         addTwoArraysResults = loadFromFile("graphql/external_reference/add_two_arrays_results.txt");
         addTwoArraysInstance = loadFromFile("graphql/external_reference/add_two_arrays_instance.txt");
         addTwoArraysInstanceResult = loadFromFile("graphql/external_reference/add_two_arrays_instance_results.txt");
+        viewTwoArrays = loadFromFile("graphql/external_reference/view_two_arrays.txt");
+        viewTwoArraysResults = loadFromFile("graphql/external_reference/view_two_arrays_results.txt");
     }
 
     public void resolveArrayOfImages() {
         // Add an external reference
-        GraphQLResult result = upsert(SIMON, simonInstanceArrayInstance);
+        GraphQLResult result = execute(SIMON, simonInstanceArrayInstance);
         assertResult(result, addSimonArrayInstanceResult);
 
         // Do a normal instance query
-        result = upsert(SIMON, viewSimonArray);
+        result = execute(SIMON, viewSimonArray);
         assertResult(result, viewSimonArrayResults);
     }
 
     public void moreThanOneArrayOfExternalReferencesInAGivenSchema() {
         // Add an instance with a few fields of type 'Array of External References'
-        GraphQLResult result = upsert(MULTIPLE_EXT_REF_ARRAYS, addTwoArraysInstance);
+        GraphQLResult result = execute(MULTIPLE_EXT_REF_ARRAYS, addTwoArraysInstance);
         assertResult(result, addTwoArraysInstanceResult);
+
+        // Do a normal instance query
+        result = execute(MULTIPLE_EXT_REF_ARRAYS, viewTwoArrays);
+        assertResult(result, viewTwoArraysResults);
     }
 
     void loadSchema() {

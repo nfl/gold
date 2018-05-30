@@ -68,8 +68,8 @@ public abstract class BaseExternalReferenceTest extends BaseBeanTest {
     }
 
 
-    GraphQLResult upsert(String key, String query) {
-        Map<String, Object> variableMap = buildVariableMap(INSTANCE_NAME_SPACE, key);
+    GraphQLResult execute(String instanceNamespace, String query) {
+        Map<String, Object> variableMap = buildVariableMap(INSTANCE_NAME_SPACE, instanceNamespace);
         return instanceService.executeQuery(query,
                 variableMap, buildSchemaWriteAccess(), DEFAULT_MAX_RECURSE_DEPTH);
     }
