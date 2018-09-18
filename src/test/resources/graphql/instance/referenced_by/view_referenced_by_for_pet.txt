@@ -1,0 +1,15 @@
+{
+  viewer {
+    instances {
+      edges {
+        node {
+          id
+          name
+          referencedBy {
+            id
+          }
+        }
+      }
+    }
+  }
+}

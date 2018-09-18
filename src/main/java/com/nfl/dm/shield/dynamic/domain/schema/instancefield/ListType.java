@@ -191,7 +191,7 @@ public class ListType extends SchemaInstanceField {
 
         // Helper instance field that allow accessing the right hasReferencesToInstanceID method depending on the
         // base list type
-        SchemaInstanceField helperSchemaInstanceField = getArrayEntryType().fieldFactory(null, this);
+        SchemaInstanceField helperSchemaInstanceField = getArrayEntryType().fieldFactory(this.getParent(), this);
         return entries.stream().anyMatch(entry ->
                 helperSchemaInstanceField.hasReferencesToInstanceID(entry, targetSchemaDescription, targetId)
         );
