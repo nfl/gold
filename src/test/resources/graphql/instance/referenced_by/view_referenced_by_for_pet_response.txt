@@ -1,0 +1,1 @@
+{viewer={instances={edges=[{node={id=meow1234, name=Sylvester, referencedBy=[]}}, {node={id=bird1234, name=Tweety, referencedBy=[{id=meow1234}]}}]}}}

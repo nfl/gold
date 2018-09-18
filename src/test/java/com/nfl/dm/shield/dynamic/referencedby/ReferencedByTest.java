@@ -27,6 +27,7 @@ public class ReferencedByTest extends BaseBeanTest {
     private final String descriptionBlockSchema;
     private final String playlistSchema;
     private final String audioListSchema;
+    private final String petSchema;
     private final String addVideoInstance;
     private final String addAudioInstance;
     private final String addMediaInstance;
@@ -38,6 +39,8 @@ public class ReferencedByTest extends BaseBeanTest {
     private final String viewReferencedByForVideoResponse;
     private final String addPlaylistInstance;
     private final String addAudioListInstance;
+    private final String addPetInstance;
+    private final String addPetInstanceWithAnotherInstanceReference;
     private final String viewReferencedByForDescriptionBlock;
     private final String viewReferencedByForDescriptionBlockResponse;
     private final String viewReferencedByForVideoOnPlaylistResponse;
@@ -45,6 +48,9 @@ public class ReferencedByTest extends BaseBeanTest {
     private final String ViewReferencedByForAudioOnAudioListResponse;
     private final String viewReferencedByForVideoOnSequenceResponse;
     private final String viewReferencedByForVideoSelfReferenceResponse;
+    private final String viewReferencedByForPetInstances;
+    private final String viewReferencedByForPetInstancesResponse;
+
     private final String addAudioInstanceWithVideoIdOnDesc;
 
 
@@ -53,6 +59,7 @@ public class ReferencedByTest extends BaseBeanTest {
     private final static String VIDEO_SCHEMA_NAME = "Video";
     private final static String AUDIO_SCHEMA_NAME = "Audio";
     private final static String MEDIA_SCHEMA_NAME = "Media";
+    private final static String PET_SCHEMA_NAME = "Pet";
     private final static String DESCRIPTION_BLOCK_SCHEMA_NAME = "DescriptionBlock";
     private final static String PLAYLIST_SCHEMA_NAME = "Playlist";
     private final static String AUDIOLIST_SCHEMA_NAME = "AudioList"
@@ -81,6 +88,8 @@ public class ReferencedByTest extends BaseBeanTest {
                 "graphql/instance/referenced_by/add_description_block.txt");
         audioListSchema = loadFromFile(
                 "graphql/instance/referenced_by/add_audiolist.txt");
+        petSchema = loadFromFile(
+                "graphql/instance/referenced_by/add_pet.txt");
         addVideoInstance = loadFromFile(
                 "graphql/instance/referenced_by/add_video_instance.txt");
         addDescriptionBlockInstance = loadFromFile(
@@ -113,12 +122,20 @@ public class ReferencedByTest extends BaseBeanTest {
                 "graphql/instance/referenced_by/add_video_w_self_reference.txt");
         viewReferencedByForVideoSelfReferenceResponse = loadFromFile(
                 "graphql/instance/referenced_by/view_referenced_by_for_video_w_self_reference_response.txt");
+        viewReferencedByForPetInstances = loadFromFile(
+                "graphql/instance/referenced_by/view_referenced_by_for_pet.txt");
+        viewReferencedByForPetInstancesResponse = loadFromFile(
+                "graphql/instance/referenced_by/view_referenced_by_for_pet_response.txt");
         addAudioInstance = loadFromFile(
                 "graphql/instance/referenced_by/add_audio_instance.txt");
         addAudioListInstance = loadFromFile(
                 "graphql/instance/referenced_by/add_audiolist_instance.txt");
         addAudioInstanceWithVideoIdOnDesc = loadFromFile(
                 "graphql/instance/referenced_by/add_audio_instance_with_videoid1_on_desc.txt");
+        addPetInstance = loadFromFile(
+                "graphql/instance/referenced_by/add_pet_instance.txt");
+        addPetInstanceWithAnotherInstanceReference = loadFromFile(
+                "graphql/instance/referenced_by/add_pet_instance_with_another_instance_reference.txt");
     }
 
 
@@ -284,6 +301,30 @@ public class ReferencedByTest extends BaseBeanTest {
 
     }
 
+    public void petWithSameInstanceReferences() {
+        SchemaWriteAccess access = buildSchemaWriteAccessCacheTestNamespace();
+
+        // Add pet instance
+        GraphQLResult addPetInstance = instanceService.executeQuery(this.addPetInstance,
+                buildVariableMap(REFERENCEDBY_TEST_NAMESPACE, PET_SCHEMA_NAME),
+                access, DEFAULT_MAX_RECURSE_DEPTH);
+        assertTrue(addPetInstance.isSuccessful());
+
+        // Add pet instance referencing another pet instance
+        GraphQLResult addPetInstanceWithReference = instanceService.executeQuery(this.addPetInstanceWithAnotherInstanceReference,
+                buildVariableMap(REFERENCEDBY_TEST_NAMESPACE, PET_SCHEMA_NAME),
+                access, DEFAULT_MAX_RECURSE_DEPTH);
+        assertTrue(addPetInstanceWithReference.isSuccessful());
+
+        // Verify "referencedBy" on Pet returns the referenced pets ids
+        GraphQLResult viewReferencedByForPetInstancesResult = instanceService.executeQuery(
+                this.viewReferencedByForPetInstances, buildVariableMap(REFERENCEDBY_TEST_NAMESPACE, PET_SCHEMA_NAME),
+                access, DEFAULT_MAX_RECURSE_DEPTH);
+
+        assertTrue(viewReferencedByForPetInstancesResult.isSuccessful());
+        assertResult(viewReferencedByForPetInstancesResult, viewReferencedByForPetInstancesResponse);
+    }
+
 
     @BeforeMethod
     private void loadSchemas() {
@@ -309,6 +350,9 @@ public class ReferencedByTest extends BaseBeanTest {
 
         GraphQLResult resultAudioListSchemaCreation = schemaService.executeQuery(audioListSchema, variableMap, access);
         assertTrue(resultAudioListSchemaCreation.isSuccessful());
+
+        GraphQLResult resultPetSchemaCreation = schemaService.executeQuery(petSchema, variableMap, access);
+        assertTrue(resultPetSchemaCreation.isSuccessful());
     }
 
     private SchemaWriteAccess buildSchemaWriteAccessCacheTestNamespace() {
